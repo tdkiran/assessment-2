@@ -156,6 +156,7 @@ function (_Component) {
         }));
       })), __jsx("button", {
         type: "submit",
+        "data-testid": "submit",
         onClick: this.saveBooking,
         __source: {
           fileName: _jsxFileName,
@@ -280,12 +281,14 @@ function (_Component) {
         },
         __self: this
       }, __jsx("option", {
+        value: "1",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 28
         },
         __self: this
       }, "1"), selected && __jsx("option", {
+        value: "2",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 29
@@ -318,18 +321,21 @@ function (_Component) {
         },
         __self: this
       }, __jsx("option", {
+        value: "0",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 37
         },
         __self: this
       }, "0"), selected && __jsx(react__WEBPACK_IMPORTED_MODULE_6___default.a.Fragment, null, __jsx("option", {
+        value: "1",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 39
         },
         __self: this
       }, "1"), __jsx("option", {
+        value: "2",
         __source: {
           fileName: _jsxFileName,
           lineNumber: 40

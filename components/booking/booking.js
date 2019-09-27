@@ -60,7 +60,7 @@ export class Booking extends Component {
                     })
                 }
             </RoomsContainer>
-            <button type="submit" onClick={this.saveBooking}>Submit</button>
+            <button type="submit" data-testid="submit" onClick={this.saveBooking}>Submit</button>
         </BookingContainer>);
     }
 }

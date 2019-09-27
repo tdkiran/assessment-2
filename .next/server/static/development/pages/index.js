@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -206,6 +206,7 @@ class Booking extends react__WEBPACK_IMPORTED_MODULE_3__["Component"] {
       }));
     })), __jsx("button", {
       type: "submit",
+      "data-testid": "submit",
       onClick: this.saveBooking,
       __source: {
         fileName: _jsxFileName,
@@ -290,12 +291,14 @@ class RoomForm extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       },
       __self: this
     }, __jsx("option", {
+      value: "1",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 28
       },
       __self: this
     }, "1"), selected && __jsx("option", {
+      value: "2",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 29
@@ -328,18 +331,21 @@ class RoomForm extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       },
       __self: this
     }, __jsx("option", {
+      value: "0",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 37
       },
       __self: this
     }, "0"), selected && __jsx(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, __jsx("option", {
+      value: "1",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 39
       },
       __self: this
     }, "1"), __jsx("option", {
+      value: "2",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 40
@@ -894,7 +900,7 @@ function initializeStore(initialState = AppInitialState) {
 
 /***/ }),
 
-/***/ 4:
+/***/ 3:
 /*!******************************!*\
   !*** multi ./pages/index.js ***!
   \******************************/

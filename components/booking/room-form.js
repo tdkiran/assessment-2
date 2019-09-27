@@ -25,8 +25,8 @@ export class RoomForm extends Component {
                 <select
                     defaultValue={occupants.adult || ''}
                     onChange={this.onChange.bind(this, 'adult')}>
-                    <option>1</option>
-                    {selected && (<option>2</option>)}
+                    <option value="1">1</option>
+                    {selected && (<option value="2">2</option>)}
                 </select>
             </FormItem>
             <FormItem>
@@ -34,10 +34,10 @@ export class RoomForm extends Component {
                 <select
                     defaultValue={occupants.children || ''}
                     onChange={this.onChange.bind(this, 'children')}>
-                    <option>0</option>
+                    <option value="0">0</option>
                     {selected && (<>
-                        <option>1</option>
-                        <option>2</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
                     </>)}
                 </select>
             </FormItem>
