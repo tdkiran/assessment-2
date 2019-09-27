@@ -23,9 +23,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/taggedTemplateLiteral */ "./node_modules/@babel/runtime-corejs2/helpers/esm/taggedTemplateLiteral.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var _common_card__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../common/card */ "./components/common/card.js");
-/* harmony import */ var _room__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./room */ "./components/booking/room.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _room__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./room */ "./components/booking/room.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 
 
 
@@ -62,20 +61,19 @@ function _templateObject() {
 
 
 
-
-var BookingContainer = styled_components__WEBPACK_IMPORTED_MODULE_13__["default"].div(_templateObject());
-var RoomsContainer = styled_components__WEBPACK_IMPORTED_MODULE_13__["default"].div(_templateObject2());
+var BookingContainer = styled_components__WEBPACK_IMPORTED_MODULE_12__["default"].div(_templateObject());
+var RoomsContainer = styled_components__WEBPACK_IMPORTED_MODULE_12__["default"].div(_templateObject2());
 var Booking =
 /*#__PURE__*/
 function (_Component) {
   Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_7__["default"])(Booking, _Component);
 
-  function Booking() {
+  function Booking(props) {
     var _this;
 
     Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_2__["default"])(this, Booking);
 
-    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__["default"])(Booking).call(this));
+    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__["default"])(Booking).call(this, props));
 
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6__["default"])(_this), "saveBooking", function () {
       var appState = _this.props.appState;
@@ -89,7 +87,7 @@ function (_Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       var initState = this.props.initState;
-      var localState = JSON.parse(localStorage.getItem('bookings') || '');
+      var localState = JSON.parse(localStorage.getItem('bookings')) || null;
 
       if (localState) {
         initState(localState);
@@ -106,8 +104,7 @@ function (_Component) {
 
       var rooms = _rooms.filter(function (r) {
         return r.available;
-      }); // resetSelection();
-
+      });
 
       var index = rooms.indexOf(room);
       rooms.slice(0, index + 1).forEach(function (_ref) {
@@ -136,23 +133,24 @@ function (_Component) {
       return __jsx(BookingContainer, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 54
+          lineNumber: 51
         },
         __self: this
       }, __jsx(RoomsContainer, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 55
+          lineNumber: 52
         },
         __self: this
       }, rooms.map(function (room) {
-        return __jsx(_room__WEBPACK_IMPORTED_MODULE_12__["Room"], Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, room, {
+        return __jsx(_room__WEBPACK_IMPORTED_MODULE_11__["Room"], Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, room, {
+          key: room.roomId,
           selectOccupant: selectOccupant,
           selected: selectedRoomIds.includes(room.roomId),
           onSelectionChange: _this2.onSelectionChange.bind(_this2, room),
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 58
+            lineNumber: 55
           },
           __self: this
         }));
@@ -161,7 +159,7 @@ function (_Component) {
         onClick: this.saveBooking,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 65
+          lineNumber: 63
         },
         __self: this
       }, "Submit"));
@@ -11106,7 +11104,7 @@ function initializeStore() {
 
 /***/ }),
 
-/***/ 1:
+/***/ 0:
 /*!*****************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2F&absolutePagePath=%2FUsers%2Ftdkiran%2FDesktop%2Fwith-redux%2Fpages%2Findex.js ***!
   \*****************************************************************************************************************************/
@@ -11129,5 +11127,5 @@ module.exports = dll_01f9a3fa864a7b7414d8;
 
 /***/ })
 
-},[[1,"static/runtime/webpack.js"]]]);
+},[[0,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=index.js.map

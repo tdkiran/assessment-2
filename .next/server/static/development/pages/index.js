@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -109,10 +109,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _common_card__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../common/card */ "./components/common/card.js");
-/* harmony import */ var _room__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./room */ "./components/booking/room.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! styled-components */ "styled-components");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _room__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./room */ "./components/booking/room.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! styled-components */ "styled-components");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_5__);
 
 
 
@@ -121,18 +120,17 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement;
 
 
 
-
-const BookingContainer = styled_components__WEBPACK_IMPORTED_MODULE_6___default.a.div`
+const BookingContainer = styled_components__WEBPACK_IMPORTED_MODULE_5___default.a.div`
 display: flex;
 flex-direction: column;
 align-items: start
 `;
-const RoomsContainer = styled_components__WEBPACK_IMPORTED_MODULE_6___default.a.div`
+const RoomsContainer = styled_components__WEBPACK_IMPORTED_MODULE_5___default.a.div`
     display: flex;
 `;
 class Booking extends react__WEBPACK_IMPORTED_MODULE_3__["Component"] {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(this, "saveBooking", () => {
       const {
@@ -146,7 +144,7 @@ class Booking extends react__WEBPACK_IMPORTED_MODULE_3__["Component"] {
     const {
       initState
     } = this.props;
-    const localState = JSON.parse(localStorage.getItem('bookings') || '');
+    const localState = JSON.parse(localStorage.getItem('bookings')) || null;
 
     if (localState) {
       initState(localState);
@@ -161,8 +159,7 @@ class Booking extends react__WEBPACK_IMPORTED_MODULE_3__["Component"] {
       resetSelection
     } = this.props;
 
-    const rooms = _rooms.filter(r => r.available); // resetSelection();
-
+    const rooms = _rooms.filter(r => r.available);
 
     const index = rooms.indexOf(room);
     rooms.slice(0, index + 1).forEach(({
@@ -186,23 +183,24 @@ class Booking extends react__WEBPACK_IMPORTED_MODULE_3__["Component"] {
     return __jsx(BookingContainer, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 54
+        lineNumber: 51
       },
       __self: this
     }, __jsx(RoomsContainer, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 55
+        lineNumber: 52
       },
       __self: this
     }, rooms.map(room => {
-      return __jsx(_room__WEBPACK_IMPORTED_MODULE_5__["Room"], Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, room, {
+      return __jsx(_room__WEBPACK_IMPORTED_MODULE_4__["Room"], Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, room, {
+        key: room.roomId,
         selectOccupant: selectOccupant,
         selected: selectedRoomIds.includes(room.roomId),
         onSelectionChange: this.onSelectionChange.bind(this, room),
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 58
+          lineNumber: 55
         },
         __self: this
       }));
@@ -211,7 +209,7 @@ class Booking extends react__WEBPACK_IMPORTED_MODULE_3__["Component"] {
       onClick: this.saveBooking,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 65
+        lineNumber: 63
       },
       __self: this
     }, "Submit"));
@@ -893,7 +891,7 @@ function initializeStore(initialState = AppInitialState) {
 
 /***/ }),
 
-/***/ 4:
+/***/ 3:
 /*!******************************!*\
   !*** multi ./pages/index.js ***!
   \******************************/
