@@ -1,4 +1,4 @@
-# Online Rooms Reservation System
+# Online Hotel Reservation System
 
 Install it and run:
 
