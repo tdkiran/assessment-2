@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "test": "cypress open"
   },
   "dependencies": {
     "next": "latest",
@@ -15,5 +16,8 @@
     "redux-devtools-extension": "^2.13.2",
     "styled-components": "^4.4.0"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^3.4.1"
+  }
 }

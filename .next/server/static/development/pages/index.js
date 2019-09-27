@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -387,6 +387,7 @@ class Room extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
       selected: selected,
       selectable: available,
       onSelectionChange: onSelectionChange,
+      testId: roomId,
       __source: {
         fileName: _jsxFileName,
         lineNumber: 12
@@ -488,11 +489,13 @@ class AppCard extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       title,
       children,
       selectable,
-      selected
+      selected,
+      testId
     } = this.props;
     const shouldDisable = selectable ? !this.state.selected : false;
     return __jsx(Card, {
       disabled: shouldDisable,
+      "data-testid": `room-${testId}`,
       __source: {
         fileName: _jsxFileName,
         lineNumber: 65
@@ -891,7 +894,7 @@ function initializeStore(initialState = AppInitialState) {
 
 /***/ }),
 
-/***/ 3:
+/***/ 4:
 /*!******************************!*\
   !*** multi ./pages/index.js ***!
   \******************************/

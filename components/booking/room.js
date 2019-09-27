@@ -9,7 +9,7 @@ export class Room extends Component {
             title, available, selected,
             onSelectionChange,
             selectOccupant, occupants = {} } = this.props;
-        return (<AppCard title={title} selected={selected} selectable={available} onSelectionChange={onSelectionChange}>
+        return (<AppCard title={title} selected={selected} selectable={available} onSelectionChange={onSelectionChange} testId={roomId}>
             <RoomForm selected={selected} occupants={occupants[roomId]} selectOccupant={selectOccupant.bind(this, roomId)} />
         </AppCard>);
     }

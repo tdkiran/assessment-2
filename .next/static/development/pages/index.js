@@ -401,6 +401,7 @@ function (_Component) {
         selected: selected,
         selectable: available,
         onSelectionChange: onSelectionChange,
+        testId: roomId,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 12
@@ -571,10 +572,12 @@ function (_Component) {
           title = _this$props.title,
           children = _this$props.children,
           selectable = _this$props.selectable,
-          selected = _this$props.selected;
+          selected = _this$props.selected,
+          testId = _this$props.testId;
       var shouldDisable = selectable ? !this.state.selected : false;
       return __jsx(Card, {
         disabled: shouldDisable,
+        "data-testid": "room-".concat(testId),
         __source: {
           fileName: _jsxFileName,
           lineNumber: 65

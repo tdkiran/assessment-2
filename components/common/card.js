@@ -58,11 +58,11 @@ export class AppCard extends Component {
     }
 
     render() {
-        const { title, children, selectable, selected } = this.props;
+        const { title, children, selectable, selected, testId } = this.props;
         const shouldDisable = selectable ? !this.state.selected : false;
 
         return (
-            <Card disabled={shouldDisable}>
+            <Card disabled={shouldDisable} data-testid={`room-${testId}`} >
                 <CardTitle disabled={shouldDisable}>
                     {selectable &&
                         <input type="checkbox" checked={selected} onChange={this.toggleSelection} />}
@@ -71,7 +71,7 @@ export class AppCard extends Component {
                 <CardContent disabled={shouldDisable}>
                     {children}
                 </CardContent>
-            </Card>
+            </ Card>
         );
     }
 }
