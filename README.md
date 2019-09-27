@@ -1,7 +1,7 @@
 # Online Hotel Reservation System
 
-Install it and run:
-
+##Install it and run:
+ 
 ```bash
 npm install
 npm run dev
@@ -9,5 +9,9 @@ npm run dev
 yarn
 yarn dev
 ```
+
+## Run cypress tests
+
+``` yarn test or npm run test ```
 
 
