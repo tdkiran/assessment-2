@@ -5,13 +5,32 @@ import styled from 'styled-components';
 
 const BookingContainer = styled.div`
 display: flex;
+flex-direction: column;
+align-items: start
+`;
+
+const RoomsContainer = styled.div`
+    display: flex;
 `;
 
 export class Booking extends Component {
     constructor() {
         super();
     }
+
     componentDidMount() {
+        const { initState } = this.props;
+
+        const localState = JSON.parse(localStorage.getItem('bookings') || '');
+
+        if (localState) {
+            initState(localState);
+        }
+    }
+
+    saveBooking = () => {
+        const { appState } = this.props;
+        localStorage.setItem('bookings', JSON.stringify(appState));
     }
 
     onSelectionChange(room, selected) {
@@ -32,13 +51,18 @@ export class Booking extends Component {
     render() {
         const { rooms, selectedRoomIds = [], selectOccupant } = this.props;
 
-        return (<BookingContainer>{
-            rooms.map((room) => {
-                return <Room {...room}
-                    selectOccupant={selectOccupant}
-                    selected={selectedRoomIds.includes(room.roomId)}
-                    onSelectionChange={this.onSelectionChange.bind(this, room)} />
-            })
-        }</BookingContainer>);
+        return (<BookingContainer>
+            <RoomsContainer>
+                {
+                    rooms.map((room) => {
+                        return <Room {...room}
+                            selectOccupant={selectOccupant}
+                            selected={selectedRoomIds.includes(room.roomId)}
+                            onSelectionChange={this.onSelectionChange.bind(this, room)} />
+                    })
+                }
+            </RoomsContainer>
+            <button type="submit" onClick={this.saveBooking}>Submit</button>
+        </BookingContainer>);
     }
 }

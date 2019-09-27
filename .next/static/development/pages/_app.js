@@ -12757,7 +12757,7 @@ function (_App) {
 /*!******************!*\
   !*** ./store.js ***!
   \******************/
-/*! exports provided: actionTypes, reducer, selectRoom, deSelectRoom, resetSelection, selectOccupant, saveBooking, getSelectedRoomIds, getSelectedRooms, getOccupants, getRooms, initializeStore */
+/*! exports provided: actionTypes, reducer, selectRoom, deSelectRoom, resetSelection, selectOccupant, initState, getSelectedRoomIds, getSelectedRooms, getOccupants, getRooms, initializeStore */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12768,7 +12768,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deSelectRoom", function() { return deSelectRoom; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "resetSelection", function() { return resetSelection; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectOccupant", function() { return selectOccupant; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "saveBooking", function() { return saveBooking; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "initState", function() { return initState; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getSelectedRoomIds", function() { return getSelectedRoomIds; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getSelectedRooms", function() { return getSelectedRooms; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getOccupants", function() { return getOccupants; });
@@ -12811,15 +12811,14 @@ function generateRooms() {
 var AppInitialState = {
   rooms: generateRooms(),
   selectedRoomIds: [],
-  occupants: {},
-  savedBooking: {}
+  occupants: {}
 };
 var actionTypes = {
   SELECT_ROOM: 'SELECT_ROOM',
   DESELECT_ROOM: 'DESELECT_ROOM',
   RESET_SELECTION: 'RESET_SELECTION',
   SELECT_OCCUPANT: 'SELECT_OCCUPANT',
-  SAVE_BOOKING: 'SAVE_BOOKING'
+  INIT_STATE: 'INIT_STATE'
 }; // REDUCERS
 
 var reducer = function reducer() {
@@ -12850,8 +12849,8 @@ var reducer = function reducer() {
         occupants: Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_3__["default"])({}, state.occupants, Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])({}, action.roomId, Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_3__["default"])({}, state.occupants[action.roomId], Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_1__["default"])({}, action.occupant_type, action.qty))))
       });
 
-    case actionTypes.SAVE_BOOKING:
-      return state;
+    case actionTypes.INIT_STATE:
+      return action.state;
 
     default:
       return state;
@@ -12883,9 +12882,10 @@ var selectOccupant = function selectOccupant(roomId, occupant_type, qty) {
     qty: qty
   };
 };
-var saveBooking = function saveBooking() {
+var initState = function initState(state) {
   return {
-    type: actionTypes.SAVE_BOOKING
+    type: actionTypes.INIT_STATE,
+    state: state
   };
 }; // selector
 

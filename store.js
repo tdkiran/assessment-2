@@ -27,8 +27,7 @@ const AppInitialState = {
   selectedRoomIds: [],
   occupants: {
 
-  },
-  savedBooking: {}
+  }
 }
 
 export const actionTypes = {
@@ -36,7 +35,7 @@ export const actionTypes = {
   DESELECT_ROOM: 'DESELECT_ROOM',
   RESET_SELECTION: 'RESET_SELECTION',
   SELECT_OCCUPANT: 'SELECT_OCCUPANT',
-  SAVE_BOOKING: 'SAVE_BOOKING'
+  INIT_STATE: 'INIT_STATE'
 }
 
 // REDUCERS
@@ -74,8 +73,8 @@ export const reducer = (state = AppInitialState, action) => {
           }
         }
       };
-    case actionTypes.SAVE_BOOKING:
-      return state;
+    case actionTypes.INIT_STATE:
+      return action.state;
     default:
       return state
   }
@@ -96,8 +95,8 @@ export const selectOccupant = (roomId, occupant_type, qty) => {
   return { type: actionTypes.SELECT_OCCUPANT, roomId, occupant_type, qty };
 }
 
-export const saveBooking = () => {
-  return { type: actionTypes.SAVE_BOOKING }
+export const initState = (state) => {
+  return { type: actionTypes.INIT_STATE, state };
 }
 
 

@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -104,28 +104,54 @@ module.exports =
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Booking", function() { return Booking; });
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/extends */ "./node_modules/@babel/runtime-corejs2/helpers/esm/extends.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _common_card__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../common/card */ "./components/common/card.js");
-/* harmony import */ var _room__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./room */ "./components/booking/room.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! styled-components */ "styled-components");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/json/stringify */ "./node_modules/@babel/runtime-corejs2/core-js/json/stringify.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _common_card__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../common/card */ "./components/common/card.js");
+/* harmony import */ var _room__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./room */ "./components/booking/room.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! styled-components */ "styled-components");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(styled_components__WEBPACK_IMPORTED_MODULE_6__);
+
+
 
 var _jsxFileName = "/Users/tdkiran/Desktop/with-redux/components/booking/booking.js";
-var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+var __jsx = react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement;
 
 
 
 
-const BookingContainer = styled_components__WEBPACK_IMPORTED_MODULE_4___default.a.div`
+const BookingContainer = styled_components__WEBPACK_IMPORTED_MODULE_6___default.a.div`
 display: flex;
+flex-direction: column;
+align-items: start
 `;
-class Booking extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
+const RoomsContainer = styled_components__WEBPACK_IMPORTED_MODULE_6___default.a.div`
+    display: flex;
+`;
+class Booking extends react__WEBPACK_IMPORTED_MODULE_3__["Component"] {
   constructor() {
     super();
+
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(this, "saveBooking", () => {
+      const {
+        appState
+      } = this.props;
+      localStorage.setItem('bookings', _babel_runtime_corejs2_core_js_json_stringify__WEBPACK_IMPORTED_MODULE_1___default()(appState));
+    });
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    const {
+      initState
+    } = this.props;
+    const localState = JSON.parse(localStorage.getItem('bookings') || '');
+
+    if (localState) {
+      initState(localState);
+    }
+  }
 
   onSelectionChange(room, selected) {
     const {
@@ -160,21 +186,35 @@ class Booking extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
     return __jsx(BookingContainer, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 35
+        lineNumber: 54
+      },
+      __self: this
+    }, __jsx(RoomsContainer, {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 55
       },
       __self: this
     }, rooms.map(room => {
-      return __jsx(_room__WEBPACK_IMPORTED_MODULE_3__["Room"], Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, room, {
+      return __jsx(_room__WEBPACK_IMPORTED_MODULE_5__["Room"], Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, room, {
         selectOccupant: selectOccupant,
         selected: selectedRoomIds.includes(room.roomId),
         onSelectionChange: this.onSelectionChange.bind(this, room),
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 37
+          lineNumber: 58
         },
         __self: this
       }));
-    }));
+    })), __jsx("button", {
+      type: "submit",
+      onClick: this.saveBooking,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 65
+      },
+      __self: this
+    }, "Submit"));
   }
 
 }
@@ -490,6 +530,17 @@ class AppCard extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
 
 /***/ }),
 
+/***/ "./node_modules/@babel/runtime-corejs2/core-js/json/stringify.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/@babel/runtime-corejs2/core-js/json/stringify.js ***!
+  \***********************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! core-js/library/fn/json/stringify */ "core-js/library/fn/json/stringify");
+
+/***/ }),
+
 /***/ "./node_modules/@babel/runtime-corejs2/core-js/object/assign.js":
 /*!**********************************************************************!*\
   !*** ./node_modules/@babel/runtime-corejs2/core-js/object/assign.js ***!
@@ -686,10 +737,11 @@ const mapDispatchToProps = {
   deSelectRoom: _store__WEBPACK_IMPORTED_MODULE_3__["deSelectRoom"],
   resetSelection: _store__WEBPACK_IMPORTED_MODULE_3__["resetSelection"],
   selectOccupant: _store__WEBPACK_IMPORTED_MODULE_3__["selectOccupant"],
-  saveBooking: _store__WEBPACK_IMPORTED_MODULE_3__["saveBooking"]
+  initState: _store__WEBPACK_IMPORTED_MODULE_3__["initState"]
 };
 
 const mapStateToProps = state => ({
+  appState: state,
   rooms: Object(_store__WEBPACK_IMPORTED_MODULE_3__["getRooms"])(state),
   selectedRooms: Object(_store__WEBPACK_IMPORTED_MODULE_3__["getSelectedRooms"])(state),
   selectedRoomIds: Object(_store__WEBPACK_IMPORTED_MODULE_3__["getSelectedRoomIds"])(state),
@@ -704,7 +756,7 @@ const mapStateToProps = state => ({
 /*!******************!*\
   !*** ./store.js ***!
   \******************/
-/*! exports provided: actionTypes, reducer, selectRoom, deSelectRoom, resetSelection, selectOccupant, saveBooking, getSelectedRoomIds, getSelectedRooms, getOccupants, getRooms, initializeStore */
+/*! exports provided: actionTypes, reducer, selectRoom, deSelectRoom, resetSelection, selectOccupant, initState, getSelectedRoomIds, getSelectedRooms, getOccupants, getRooms, initializeStore */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -715,7 +767,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deSelectRoom", function() { return deSelectRoom; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "resetSelection", function() { return resetSelection; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectOccupant", function() { return selectOccupant; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "saveBooking", function() { return saveBooking; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "initState", function() { return initState; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getSelectedRoomIds", function() { return getSelectedRoomIds; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getSelectedRooms", function() { return getSelectedRooms; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getOccupants", function() { return getOccupants; });
@@ -753,15 +805,14 @@ function generateRooms() {
 const AppInitialState = {
   rooms: generateRooms(),
   selectedRoomIds: [],
-  occupants: {},
-  savedBooking: {}
+  occupants: {}
 };
 const actionTypes = {
   SELECT_ROOM: 'SELECT_ROOM',
   DESELECT_ROOM: 'DESELECT_ROOM',
   RESET_SELECTION: 'RESET_SELECTION',
   SELECT_OCCUPANT: 'SELECT_OCCUPANT',
-  SAVE_BOOKING: 'SAVE_BOOKING'
+  INIT_STATE: 'INIT_STATE'
 }; // REDUCERS
 
 const reducer = (state = AppInitialState, action) => {
@@ -791,8 +842,8 @@ const reducer = (state = AppInitialState, action) => {
         })
       });
 
-    case actionTypes.SAVE_BOOKING:
-      return state;
+    case actionTypes.INIT_STATE:
+      return action.state;
 
     default:
       return state;
@@ -824,9 +875,10 @@ const selectOccupant = (roomId, occupant_type, qty) => {
     qty
   };
 };
-const saveBooking = () => {
+const initState = state => {
   return {
-    type: actionTypes.SAVE_BOOKING
+    type: actionTypes.INIT_STATE,
+    state
   };
 }; // selector
 
@@ -841,7 +893,7 @@ function initializeStore(initialState = AppInitialState) {
 
 /***/ }),
 
-/***/ 3:
+/***/ 4:
 /*!******************************!*\
   !*** multi ./pages/index.js ***!
   \******************************/
@@ -850,6 +902,17 @@ function initializeStore(initialState = AppInitialState) {
 
 module.exports = __webpack_require__(/*! /Users/tdkiran/Desktop/with-redux/pages/index.js */"./pages/index.js");
 
+
+/***/ }),
+
+/***/ "core-js/library/fn/json/stringify":
+/*!****************************************************!*\
+  !*** external "core-js/library/fn/json/stringify" ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("core-js/library/fn/json/stringify");
 
 /***/ }),
 
