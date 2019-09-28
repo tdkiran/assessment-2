@@ -18,12 +18,12 @@ export class Booking extends Component {
     }
 
     componentDidMount() {
-        const { initState } = this.props;
-        const localState = JSON.parse(localStorage.getItem('bookings')) || null;
+        // const { initState } = this.props;
+        // const localState = JSON.parse(localStorage.getItem('bookings')) || null;
 
-        if (localState) {
-            initState(localState);
-        }
+        // if (localState) {
+        //     initState(localState);
+        // }
     }
 
     saveBooking = () => {
@@ -46,21 +46,21 @@ export class Booking extends Component {
     }
 
     render() {
-        const { rooms, selectedRoomIds = [], selectOccupant } = this.props;
-
-        return (<BookingContainer>
-            <RoomsContainer>
-                {
-                    rooms.map((room) => {
-                        return <Room {...room}
-                            key={room.roomId}
-                            selectOccupant={selectOccupant}
-                            selected={selectedRoomIds.includes(room.roomId)}
-                            onSelectionChange={this.onSelectionChange.bind(this, room)} />
-                    })
-                }
-            </RoomsContainer>
-            <button type="submit" data-testid="submit" onClick={this.saveBooking}>Submit</button>
-        </BookingContainer>);
+        const { bookingInfo } = this.props;
+        return <> {bookingInfo.map(room => <div> Kiran </div>)}</>
+        // return (<BookingContainer>
+        //     <RoomsContainer>
+        //         {
+        //             rooms.map((room) => {
+        //                 return <Room {...room}
+        //                     key={room.roomId}
+        //                     selectOccupant={selectOccupant}
+        //                     selected={selectedRoomIds.includes(room.roomId)}
+        //                     onSelectionChange={this.onSelectionChange.bind(this, room)} />
+        //             })
+        //         }
+        //     </RoomsContainer>
+        //     <button type="submit" data-testid="submit" onClick={this.saveBooking}>Submit</button>
+        // </BookingContainer>);
     }
 }

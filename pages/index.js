@@ -5,7 +5,9 @@ import {
   selectRoom, selectOccupant,
   deSelectRoom, getRooms, getSelectedRooms, getOccupants, getSelectedRoomIds,
   resetSelection, initState
-} from '../store';
+} from '../reducers/actions-creators';
+
+import { roomInfo } from '../reducers'
 
 const mapDispatchToProps = {
   selectRoom: selectRoom,
@@ -17,10 +19,7 @@ const mapDispatchToProps = {
 
 const mapStateToProps = (state) => ({
   appState: state,
-  rooms: getRooms(state),
-  selectedRooms: getSelectedRooms(state),
-  selectedRoomIds: getSelectedRoomIds(state),
-  occupants: getOccupants(state)
+  bookingInfo: roomInfo(state)
 });
 
 export default connect(

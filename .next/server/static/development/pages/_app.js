@@ -93,6 +93,45 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
+/***/ "./app_config/index.js":
+/*!*****************************!*\
+  !*** ./app_config/index.js ***!
+  \*****************************/
+/*! exports provided: defaultRoomInfo, defaultOccupent, defaultSelectedRoomId, listOfAdults, listOfChildrens */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "defaultRoomInfo", function() { return defaultRoomInfo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "defaultOccupent", function() { return defaultOccupent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "defaultSelectedRoomId", function() { return defaultSelectedRoomId; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "listOfAdults", function() { return listOfAdults; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "listOfChildrens", function() { return listOfChildrens; });
+const defaultRoomInfo = [{
+  id: 0,
+  title: 'Room 1'
+}, {
+  id: 1,
+  title: 'Room 2'
+}, {
+  id: 2,
+  title: 'Room 3'
+}, {
+  id: 3,
+  title: 'Room 4'
+}];
+const defaultAdultsOccupent = 1;
+const defaultChild = 0;
+const defaultOccupent = {
+  defaultAdultsOccupent,
+  defaultChild
+};
+const defaultSelectedRoomId = 0;
+const listOfAdults = [1, 2];
+const listOfChildrens = [0, 1, 2];
+
+/***/ }),
+
 /***/ "./lib/with-redux-store.js":
 /*!*********************************!*\
   !*** ./lib/with-redux-store.js ***!
@@ -109,7 +148,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store */ "./store.js");
 
 
-var _jsxFileName = "/Users/tdkiran/Desktop/with-redux/lib/with-redux-store.js";
+var _jsxFileName = "/Users/tdkiran/Desktop/assessment-2/lib/with-redux-store.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement;
 
 
@@ -233,17 +272,6 @@ module.exports = __webpack_require__(/*! core-js/library/fn/object/get-own-prope
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(/*! core-js/library/fn/object/keys */ "core-js/library/fn/object/keys");
-
-/***/ }),
-
-/***/ "./node_modules/@babel/runtime-corejs2/core-js/object/values.js":
-/*!**********************************************************************!*\
-  !*** ./node_modules/@babel/runtime-corejs2/core-js/object/values.js ***!
-  \**********************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! core-js/library/fn/object/values */ "core-js/library/fn/object/values");
 
 /***/ }),
 
@@ -2157,7 +2185,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-redux */ "react-redux");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_4__);
 
-var _jsxFileName = "/Users/tdkiran/Desktop/with-redux/pages/_app.js";
+var _jsxFileName = "/Users/tdkiran/Desktop/assessment-2/pages/_app.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement;
 
 
@@ -2193,102 +2221,28 @@ class MyApp extends next_app__WEBPACK_IMPORTED_MODULE_1___default.a {
 
 /***/ }),
 
-/***/ "./store.js":
-/*!******************!*\
-  !*** ./store.js ***!
-  \******************/
-/*! exports provided: actionTypes, reducer, selectRoom, deSelectRoom, resetSelection, selectOccupant, initState, getSelectedRoomIds, getSelectedRooms, getOccupants, getRooms, initializeStore */
+/***/ "./reducers/actions-creators.js":
+/*!**************************************!*\
+  !*** ./reducers/actions-creators.js ***!
+  \**************************************/
+/*! exports provided: actionTypes, selectRoom, deSelectRoom, resetSelection, selectOccupant, initState */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "actionTypes", function() { return actionTypes; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "reducer", function() { return reducer; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectRoom", function() { return selectRoom; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "deSelectRoom", function() { return deSelectRoom; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "resetSelection", function() { return resetSelection; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectOccupant", function() { return selectOccupant; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "initState", function() { return initState; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getSelectedRoomIds", function() { return getSelectedRoomIds; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getSelectedRooms", function() { return getSelectedRooms; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getOccupants", function() { return getOccupants; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getRooms", function() { return getRooms; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "initializeStore", function() { return initializeStore; });
-/* harmony import */ var _babel_runtime_corejs2_core_js_object_values__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/object/values */ "./node_modules/@babel/runtime-corejs2/core-js/object/values.js");
-/* harmony import */ var _babel_runtime_corejs2_core_js_object_values__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_values__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/objectSpread */ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectSpread.js");
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! redux */ "redux");
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(redux__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var redux_devtools_extension__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! redux-devtools-extension */ "redux-devtools-extension");
-/* harmony import */ var redux_devtools_extension__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(redux_devtools_extension__WEBPACK_IMPORTED_MODULE_3__);
-
-
-
-
-
-function generateRooms() {
-  const TOTAL_ROOMS = 4;
-  const rooms = Array(TOTAL_ROOMS).fill(1).map((v, i) => ({
-    roomId: i,
-    title: `Room ${i + v}`,
-    available: true,
-    selected: false,
-    adults: 0,
-    children: 0
-  })).reduce((byId, room) => {
-    byId[room.roomId] = room;
-    return byId;
-  }, {});
-  rooms[0].available = false;
-  return rooms;
-}
-
-const AppInitialState = {
-  rooms: generateRooms(),
-  selectedRoomIds: [],
-  occupants: {}
-};
+// TYPES
 const actionTypes = {
   SELECT_ROOM: 'SELECT_ROOM',
   DESELECT_ROOM: 'DESELECT_ROOM',
   RESET_SELECTION: 'RESET_SELECTION',
   SELECT_OCCUPANT: 'SELECT_OCCUPANT',
   INIT_STATE: 'INIT_STATE'
-}; // REDUCERS
-
-const reducer = (state = AppInitialState, action) => {
-  switch (action.type) {
-    case actionTypes.SELECT_ROOM:
-      return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_1__["default"])({}, state, {
-        selectedRoomIds: [...state.selectedRoomIds, action.roomId]
-      });
-
-    case actionTypes.DESELECT_ROOM:
-      return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_1__["default"])({}, state, {
-        selectedRoomIds: state.selectedRoomIds.filter(roomId => roomId !== action.roomId)
-      });
-
-    case actionTypes.RESET_SELECTION:
-      return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_1__["default"])({}, state, {
-        selectedRoomIds: [],
-        occupants: {}
-      });
-
-    case actionTypes.SELECT_OCCUPANT:
-      return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_1__["default"])({}, state, {
-        occupants: Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_1__["default"])({}, state.occupants, {
-          [action.roomId]: Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_1__["default"])({}, state.occupants[action.roomId], {
-            [action.occupant_type]: action.qty
-          })
-        })
-      });
-
-    case actionTypes.INIT_STATE:
-      return action.state;
-
-    default:
-      return state;
-  }
 }; // ACTIONS
 
 const selectRoom = roomId => {
@@ -2321,15 +2275,121 @@ const initState = state => {
     type: actionTypes.INIT_STATE,
     state
   };
-}; // selector
+};
 
-const getSelectedRoomIds = state => state.selectedRoomIds;
-const getSelectedRooms = state => state.selectedRoomIds.map(roomId => state.rooms[roomId]);
-const getOccupants = state => state.occupants;
-const getRooms = state => _babel_runtime_corejs2_core_js_object_values__WEBPACK_IMPORTED_MODULE_0___default()(state.rooms); // init store
+/***/ }),
 
-function initializeStore(initialState = AppInitialState) {
-  return Object(redux__WEBPACK_IMPORTED_MODULE_2__["createStore"])(reducer, initialState, Object(redux_devtools_extension__WEBPACK_IMPORTED_MODULE_3__["composeWithDevTools"])(Object(redux__WEBPACK_IMPORTED_MODULE_2__["applyMiddleware"])()));
+/***/ "./reducers/index.js":
+/*!***************************!*\
+  !*** ./reducers/index.js ***!
+  \***************************/
+/*! exports provided: default, getActiveRooms, getOccupantSelectionInfo, roomInfo */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getActiveRooms", function() { return getActiveRooms; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getOccupantSelectionInfo", function() { return getOccupantSelectionInfo; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "roomInfo", function() { return roomInfo; });
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/objectSpread */ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectSpread.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! redux */ "redux");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(redux__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _actions_creators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./actions-creators */ "./reducers/actions-creators.js");
+/* harmony import */ var reselect__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! reselect */ "reselect");
+/* harmony import */ var reselect__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(reselect__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _app_config__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../app_config */ "./app_config/index.js");
+
+
+
+
+
+
+function activeRooms(state = 1, action) {
+  switch (action.type) {
+    case _actions_creators__WEBPACK_IMPORTED_MODULE_2__["actionTypes"].SELECT_ROOM:
+      return action.roomId + 1;
+
+    case _actions_creators__WEBPACK_IMPORTED_MODULE_2__["actionTypes"].DESELECT_ROOM:
+      return action.roomId + 1;
+
+    default:
+      return state;
+  }
+}
+
+function occupantSelectionInfo(state = [], action) {
+  switch (action.type) {
+    case _actions_creators__WEBPACK_IMPORTED_MODULE_2__["actionTypes"].SELECT_OCCUPANT:
+      {
+        return state.filter(occupantInfo => occupantInfo.roomId !== action.roomId).concat(action.occupantInfo);
+      }
+
+    case _actions_creators__WEBPACK_IMPORTED_MODULE_2__["actionTypes"].SELECT_ROOM:
+      {
+        const activeRooms = action.roomId + 1;
+        return state.filter(occupantInfo => occupantInfo.roomId <= activeRooms);
+      }
+
+    case _actions_creators__WEBPACK_IMPORTED_MODULE_2__["actionTypes"].DESELECT_ROOM:
+      {
+        const activeRooms = action.roomId + 1;
+        return state.filter(occupantInfo => occupantInfo.roomId > activeRooms);
+      }
+
+    default:
+      return state;
+  }
+} // Root Reducer
+
+
+const reducer = Object(redux__WEBPACK_IMPORTED_MODULE_1__["combineReducers"])({
+  activeRooms,
+  occupantSelectionInfo
+});
+/* harmony default export */ __webpack_exports__["default"] = (reducer); // selector
+
+const getActiveRooms = state => state.activeRooms;
+const getOccupantSelectionInfo = state => state.occupantSelectionInfo;
+const roomInfo = Object(reselect__WEBPACK_IMPORTED_MODULE_3__["createSelector"])(getActiveRooms, getOccupantSelectionInfo, (activeRooms, occupantSelectionInfo) => {
+  const defaultRoom = {
+    adult: 1,
+    children: 0
+  };
+  const currentRoomInfo = _app_config__WEBPACK_IMPORTED_MODULE_4__["defaultRoomInfo"].map(roomInfo => {
+    const id = roomInfo.id;
+    const occupantInfo = occupantSelectionInfo.find(occInfo => occInfo.id === id);
+    occupantInfo ? Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, roomInfo, {
+      occupantInfo
+    }) : Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, roomInfo, {
+      defaultRoom
+    });
+  });
+  return currentRoomInfo;
+});
+
+/***/ }),
+
+/***/ "./store.js":
+/*!******************!*\
+  !*** ./store.js ***!
+  \******************/
+/*! exports provided: initializeStore */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "initializeStore", function() { return initializeStore; });
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "redux");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(redux__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var redux_devtools_extension__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! redux-devtools-extension */ "redux-devtools-extension");
+/* harmony import */ var redux_devtools_extension__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(redux_devtools_extension__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _reducers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./reducers */ "./reducers/index.js");
+
+
+ // init store
+
+function initializeStore(initialState = {}) {
+  return Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers__WEBPACK_IMPORTED_MODULE_2__["default"], Object(redux_devtools_extension__WEBPACK_IMPORTED_MODULE_1__["composeWithDevTools"])(Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])()));
 }
 
 /***/ }),
@@ -2412,17 +2472,6 @@ module.exports = require("core-js/library/fn/object/keys");
 
 /***/ }),
 
-/***/ "core-js/library/fn/object/values":
-/*!***************************************************!*\
-  !*** external "core-js/library/fn/object/values" ***!
-  \***************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("core-js/library/fn/object/values");
-
-/***/ }),
-
 /***/ "core-js/library/fn/promise":
 /*!*********************************************!*\
   !*** external "core-js/library/fn/promise" ***!
@@ -2486,6 +2535,17 @@ module.exports = require("redux");
 /***/ (function(module, exports) {
 
 module.exports = require("redux-devtools-extension");
+
+/***/ }),
+
+/***/ "reselect":
+/*!***************************!*\
+  !*** external "reselect" ***!
+  \***************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("reselect");
 
 /***/ }),
 
