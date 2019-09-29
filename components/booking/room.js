@@ -8,14 +8,14 @@ export class Room extends Component {
     }
 
     render() {
-        debugger
         const { roomId,
-            title, available, selected,
-            onSelectionChange,
-            selectOccupant, occupants = {} } = this.props;
+            title, hideOption, selected,
+            selectRoom,
+            occupants = {}, active, deSelectRoom
+        } = this.props;
         return (
-            <AppCard title={title} selected={selected} selectable={available} onSelectionChange={onSelectionChange} testId={roomId}>
-                <RoomForm selected={selected} occupants={occupants[roomId]} selectOccupant={this.selectOccupant} />
+            <AppCard roomId={roomId} title={title} hideOption={hideOption} active={active} selectRoom={selectRoom} deSelectRoom={deSelectRoom} testId={roomId}>
+                <RoomForm selected={selected} occupants={occupants[roomId]} />
             </AppCard>);
     }
 }

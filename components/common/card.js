@@ -35,40 +35,30 @@ const CardContent = styled.div`
 
 
 export class AppCard extends Component {
-    static getDerivedStateFromProps(nextProps, prevState) {
-        if (prevState.selected !== nextProps.selected) {
-            return {
-                selected: nextProps.selected
-            };
-        }
 
-        return null;
+    constructor(props) {
+        super(props);
     }
 
-    constructor() {
-        super();
-        this.state = {
-            selected: false
+    handleChange = (e) => {
+        const { roomId, deSelectRoom, selectRoom } = this.props;
+        if (e.target.checked) {
+            selectRoom(roomId);
+        } else {
+            deSelectRoom(roomId);
         };
     }
 
-    toggleSelection = () => {
-        const { selected } = this.props;
-        this.props.onSelectionChange(!selected);
-    }
-
     render() {
-        const { title, children, selectable, selected, testId } = this.props;
-        const shouldDisable = selectable ? !this.state.selected : false;
-
+        const { title, children, hideOption, selected, testId, active } = this.props;
         return (
-            <Card disabled={shouldDisable} data-testid={`room-${testId}`} >
-                <CardTitle disabled={shouldDisable}>
-                    {selectable &&
-                        <input type="checkbox" checked={selected} onChange={this.toggleSelection} />}
+            <Card disabled={!active} data-testid={`room-${testId}`} >
+                <CardTitle disabled={!active}>
+                    {!hideOption &&
+                        <input type="checkbox" checked={active} onChange={this.handleChange} />}
                     {title}
                 </CardTitle>
-                <CardContent disabled={shouldDisable}>
+                <CardContent disabled={!active}>
                     {children}
                 </CardContent>
             </ Card>

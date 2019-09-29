@@ -46,31 +46,17 @@ export class Booking extends Component {
     }
 
     render() {
-        const { bookingInfo } = this.props;
+        const { bookingInfo, selectRoom, deSelectRoom } = this.props;
         console.log(bookingInfo);
         return (
             <BookingContainer>
                 <RoomsContainer>
                     {bookingInfo.map(room => (
-                        <Room {...room} />))
+                        <Room {...room} selectRoom={selectRoom} deSelectRoom={deSelectRoom} key={room.roomId} />))
                     }
                 </RoomsContainer>
                 <button type="submit" data-testid="submit" onClick={this.saveBooking}>Submit</button>
             </BookingContainer>
         );
-        // return (<BookingContainer>
-        //     <RoomsContainer>
-        //         {
-        //             rooms.map((room) => {
-        //                 return <Room {...room}
-        //                     key={room.roomId}
-        //                     selectOccupant={selectOccupant}
-        //                     selected={selectedRoomIds.includes(room.roomId)}
-        //                     onSelectionChange={this.onSelectionChange.bind(this, room)} />
-        //             })
-        //         }
-        //     </RoomsContainer>
-        //     <button type="submit" data-testid="submit" onClick={this.saveBooking}>Submit</button>
-        // </BookingContainer>);
     }
 }

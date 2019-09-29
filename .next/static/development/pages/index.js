@@ -15,16 +15,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "listOfAdults", function() { return listOfAdults; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "listOfChildrens", function() { return listOfChildrens; });
 var defaultRoomInfo = [{
-  id: 0,
+  roomId: 0,
   title: 'Room 1'
 }, {
-  id: 1,
+  roomId: 1,
   title: 'Room 2'
 }, {
-  id: 2,
+  roomId: 2,
   title: 'Room 3'
 }, {
-  id: 3,
+  roomId: 3,
   title: 'Room 4'
 }];
 var defaultAdultsOccupent = 1;
@@ -160,7 +160,10 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      var bookingInfo = this.props.bookingInfo;
+      var _this$props2 = this.props,
+          bookingInfo = _this$props2.bookingInfo,
+          selectRoom = _this$props2.selectRoom,
+          deSelectRoom = _this$props2.deSelectRoom;
       console.log(bookingInfo);
       return __jsx(BookingContainer, {
         __source: {
@@ -176,6 +179,9 @@ function (_Component) {
         __self: this
       }, bookingInfo.map(function (room) {
         return __jsx(_room__WEBPACK_IMPORTED_MODULE_11__["Room"], Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, room, {
+          selectRoom: selectRoom,
+          deSelectRoom: deSelectRoom,
+          key: room.roomId,
           __source: {
             fileName: _jsxFileName,
             lineNumber: 55
@@ -191,20 +197,7 @@ function (_Component) {
           lineNumber: 58
         },
         __self: this
-      }, "Submit")); // return (<BookingContainer>
-      //     <RoomsContainer>
-      //         {
-      //             rooms.map((room) => {
-      //                 return <Room {...room}
-      //                     key={room.roomId}
-      //                     selectOccupant={selectOccupant}
-      //                     selected={selectedRoomIds.includes(room.roomId)}
-      //                     onSelectionChange={this.onSelectionChange.bind(this, room)} />
-      //             })
-      //         }
-      //     </RoomsContainer>
-      //     <button type="submit" data-testid="submit" onClick={this.saveBooking}>Submit</button>
-      // </BookingContainer>);
+      }, "Submit"));
     }
   }]);
 
@@ -452,21 +445,23 @@ function (_Component) {
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(Room, [{
     key: "render",
     value: function render() {
-      debugger;
       var _this$props = this.props,
           roomId = _this$props.roomId,
           title = _this$props.title,
-          available = _this$props.available,
+          hideOption = _this$props.hideOption,
           selected = _this$props.selected,
-          onSelectionChange = _this$props.onSelectionChange,
-          selectOccupant = _this$props.selectOccupant,
+          selectRoom = _this$props.selectRoom,
           _this$props$occupants = _this$props.occupants,
-          occupants = _this$props$occupants === void 0 ? {} : _this$props$occupants;
+          occupants = _this$props$occupants === void 0 ? {} : _this$props$occupants,
+          active = _this$props.active,
+          deSelectRoom = _this$props.deSelectRoom;
       return __jsx(_common_card__WEBPACK_IMPORTED_MODULE_8__["AppCard"], {
+        roomId: roomId,
         title: title,
-        selected: selected,
-        selectable: available,
-        onSelectionChange: onSelectionChange,
+        hideOption: hideOption,
+        active: active,
+        selectRoom: selectRoom,
+        deSelectRoom: deSelectRoom,
         testId: roomId,
         __source: {
           fileName: _jsxFileName,
@@ -476,7 +471,6 @@ function (_Component) {
       }, __jsx(_room_form__WEBPACK_IMPORTED_MODULE_9__["RoomForm"], {
         selected: selected,
         occupants: occupants[roomId],
-        selectOccupant: this.selectOccupant,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 18
@@ -502,10 +496,10 @@ function (_Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppCard", function() { return AppCard; });
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/assertThisInitialized */ "./node_modules/@babel/runtime-corejs2/helpers/esm/assertThisInitialized.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/assertThisInitialized */ "./node_modules/@babel/runtime-corejs2/helpers/esm/assertThisInitialized.js");
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/taggedTemplateLiteral */ "./node_modules/@babel/runtime-corejs2/helpers/esm/taggedTemplateLiteral.js");
@@ -599,77 +593,70 @@ var AppCard =
 function (_Component) {
   Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_5__["default"])(AppCard, _Component);
 
-  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_4__["default"])(AppCard, null, [{
-    key: "getDerivedStateFromProps",
-    value: function getDerivedStateFromProps(nextProps, prevState) {
-      if (prevState.selected !== nextProps.selected) {
-        return {
-          selected: nextProps.selected
-        };
-      }
-
-      return null;
-    }
-  }]);
-
-  function AppCard() {
+  function AppCard(props) {
     var _this;
 
     Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, AppCard);
 
-    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_1__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_2__["default"])(AppCard).call(this));
+    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__["default"])(AppCard).call(this, props));
 
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__["default"])(_this), "toggleSelection", function () {
-      var selected = _this.props.selected;
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "handleChange", function (e) {
+      var _this$props = _this.props,
+          roomId = _this$props.roomId,
+          deSelectRoom = _this$props.deSelectRoom,
+          selectRoom = _this$props.selectRoom;
 
-      _this.props.onSelectionChange(!selected);
+      if (e.target.checked) {
+        selectRoom(roomId);
+      } else {
+        deSelectRoom(roomId);
+      }
+
+      ;
     });
 
-    _this.state = {
-      selected: false
-    };
     return _this;
   }
 
-  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_4__["default"])(AppCard, [{
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(AppCard, [{
     key: "render",
     value: function render() {
-      var _this$props = this.props,
-          title = _this$props.title,
-          children = _this$props.children,
-          selectable = _this$props.selectable,
-          selected = _this$props.selected,
-          testId = _this$props.testId;
-      var shouldDisable = selectable ? !this.state.selected : false;
+      var _this$props2 = this.props,
+          title = _this$props2.title,
+          children = _this$props2.children,
+          hideOption = _this$props2.hideOption,
+          selected = _this$props2.selected,
+          testId = _this$props2.testId,
+          active = _this$props2.active;
       return __jsx(Card, {
-        disabled: shouldDisable,
+        disabled: !active,
         "data-testid": "room-".concat(testId),
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 65
+          lineNumber: 55
         },
         __self: this
       }, __jsx(CardTitle, {
-        disabled: shouldDisable,
+        disabled: !active,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 66
+          lineNumber: 56
         },
         __self: this
-      }, selectable && __jsx("input", {
+      }, !hideOption && __jsx("input", {
         type: "checkbox",
-        checked: selected,
-        onChange: this.toggleSelection,
+        checked: active,
+        onChange: this.handleChange,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 68
+          lineNumber: 58
         },
         __self: this
       }), title), __jsx(CardContent, {
-        disabled: shouldDisable,
+        disabled: !active,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 71
+          lineNumber: 61
         },
         __self: this
       }, children));
@@ -10737,10 +10724,12 @@ function activeRooms() {
 
   switch (action.type) {
     case _actions_creators__WEBPACK_IMPORTED_MODULE_2__["actionTypes"].SELECT_ROOM:
-      return action.roomId + 1;
+      {
+        return action.roomId + 1;
+      }
 
     case _actions_creators__WEBPACK_IMPORTED_MODULE_2__["actionTypes"].DESELECT_ROOM:
-      return action.roomId + 1;
+      return action.roomId;
 
     default:
       return state;
@@ -10750,7 +10739,8 @@ function activeRooms() {
 function occupantSelectionInfo() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [{
     adult: 1,
-    children: 0
+    children: 0,
+    roomId: 0
   }];
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
@@ -10758,7 +10748,7 @@ function occupantSelectionInfo() {
     case _actions_creators__WEBPACK_IMPORTED_MODULE_2__["actionTypes"].SELECT_OCCUPANT:
       {
         return state.filter(function (occupantInfo) {
-          return occupantInfo.roomId !== action.roomId;
+          return occupantInfo.id !== action.roomId;
         }).concat(action.occupantInfo);
       }
 
@@ -10767,7 +10757,7 @@ function occupantSelectionInfo() {
         var _activeRooms = action.roomId + 1;
 
         return state.filter(function (occupantInfo) {
-          return occupantInfo.roomId <= _activeRooms;
+          return occupantInfo.id <= _activeRooms;
         });
       }
 
@@ -10776,7 +10766,7 @@ function occupantSelectionInfo() {
         var _activeRooms2 = action.roomId + 1;
 
         return state.filter(function (occupantInfo) {
-          return occupantInfo.roomId > _activeRooms2;
+          return occupantInfo.id > _activeRooms2;
         });
       }
 
@@ -10804,19 +10794,20 @@ var roomInfo = Object(reselect__WEBPACK_IMPORTED_MODULE_3__["createSelector"])(g
     children: 0
   };
   var currentRoomInfo = _app_config__WEBPACK_IMPORTED_MODULE_4__["defaultRoomInfo"].map(function (roomInfo) {
-    var id = roomInfo.id;
+    var roomId = roomInfo.roomId;
     var occupantInfo = occupantSelectionInfo.find(function (occInfo) {
-      return occInfo.id === id;
+      return occInfo.roomId === roomId;
     });
     return occupantInfo ? Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, roomInfo, {
       occupantInfo: occupantInfo,
-      active: true
+      active: true,
+      hideOption: roomId === 0 ? true : false
     }) : Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, roomInfo, {
       defaultRoom: defaultRoom,
-      active: false
+      active: roomId + 1 <= activeRooms,
+      hideOption: roomId === 0 ? true : false
     });
   });
-  debugger;
   return currentRoomInfo;
 });
 

@@ -15,16 +15,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "listOfAdults", function() { return listOfAdults; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "listOfChildrens", function() { return listOfChildrens; });
 var defaultRoomInfo = [{
-  id: 0,
+  roomId: 0,
   title: 'Room 1'
 }, {
-  id: 1,
+  roomId: 1,
   title: 'Room 2'
 }, {
-  id: 2,
+  roomId: 2,
   title: 'Room 3'
 }, {
-  id: 3,
+  roomId: 3,
   title: 'Room 4'
 }];
 var defaultAdultsOccupent = 1;
@@ -12714,10 +12714,12 @@ function activeRooms() {
 
   switch (action.type) {
     case _actions_creators__WEBPACK_IMPORTED_MODULE_2__["actionTypes"].SELECT_ROOM:
-      return action.roomId + 1;
+      {
+        return action.roomId + 1;
+      }
 
     case _actions_creators__WEBPACK_IMPORTED_MODULE_2__["actionTypes"].DESELECT_ROOM:
-      return action.roomId + 1;
+      return action.roomId;
 
     default:
       return state;
@@ -12727,7 +12729,8 @@ function activeRooms() {
 function occupantSelectionInfo() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [{
     adult: 1,
-    children: 0
+    children: 0,
+    roomId: 0
   }];
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
@@ -12735,7 +12738,7 @@ function occupantSelectionInfo() {
     case _actions_creators__WEBPACK_IMPORTED_MODULE_2__["actionTypes"].SELECT_OCCUPANT:
       {
         return state.filter(function (occupantInfo) {
-          return occupantInfo.roomId !== action.roomId;
+          return occupantInfo.id !== action.roomId;
         }).concat(action.occupantInfo);
       }
 
@@ -12744,7 +12747,7 @@ function occupantSelectionInfo() {
         var _activeRooms = action.roomId + 1;
 
         return state.filter(function (occupantInfo) {
-          return occupantInfo.roomId <= _activeRooms;
+          return occupantInfo.id <= _activeRooms;
         });
       }
 
@@ -12753,7 +12756,7 @@ function occupantSelectionInfo() {
         var _activeRooms2 = action.roomId + 1;
 
         return state.filter(function (occupantInfo) {
-          return occupantInfo.roomId > _activeRooms2;
+          return occupantInfo.id > _activeRooms2;
         });
       }
 
@@ -12781,19 +12784,20 @@ var roomInfo = Object(reselect__WEBPACK_IMPORTED_MODULE_3__["createSelector"])(g
     children: 0
   };
   var currentRoomInfo = _app_config__WEBPACK_IMPORTED_MODULE_4__["defaultRoomInfo"].map(function (roomInfo) {
-    var id = roomInfo.id;
+    var roomId = roomInfo.roomId;
     var occupantInfo = occupantSelectionInfo.find(function (occInfo) {
-      return occInfo.id === id;
+      return occInfo.roomId === roomId;
     });
     return occupantInfo ? Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, roomInfo, {
       occupantInfo: occupantInfo,
-      active: true
+      active: true,
+      hideOption: roomId === 0 ? true : false
     }) : Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, roomInfo, {
       defaultRoom: defaultRoom,
-      active: false
+      active: roomId + 1 <= activeRooms,
+      hideOption: roomId === 0 ? true : false
     });
   });
-  debugger;
   return currentRoomInfo;
 });
 

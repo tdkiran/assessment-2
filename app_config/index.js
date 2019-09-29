@@ -1,8 +1,8 @@
 export const defaultRoomInfo = [
-    { id: 0, title: 'Room 1' },
-    { id: 1, title: 'Room 2' },
-    { id: 2, title: 'Room 3' },
-    { id: 3, title: 'Room 4' }
+    { roomId: 0, title: 'Room 1' },
+    { roomId: 1, title: 'Room 2' },
+    { roomId: 2, title: 'Room 3' },
+    { roomId: 3, title: 'Room 4' }
 ];
 
 const defaultAdultsOccupent = 1;

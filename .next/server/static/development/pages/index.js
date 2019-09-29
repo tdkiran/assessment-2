@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -108,16 +108,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "listOfAdults", function() { return listOfAdults; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "listOfChildrens", function() { return listOfChildrens; });
 const defaultRoomInfo = [{
-  id: 0,
+  roomId: 0,
   title: 'Room 1'
 }, {
-  id: 1,
+  roomId: 1,
   title: 'Room 2'
 }, {
-  id: 2,
+  roomId: 2,
   title: 'Room 3'
 }, {
-  id: 3,
+  roomId: 3,
   title: 'Room 4'
 }];
 const defaultAdultsOccupent = 1;
@@ -211,7 +211,9 @@ class Booking extends react__WEBPACK_IMPORTED_MODULE_3__["Component"] {
 
   render() {
     const {
-      bookingInfo
+      bookingInfo,
+      selectRoom,
+      deSelectRoom
     } = this.props;
     console.log(bookingInfo);
     return __jsx(BookingContainer, {
@@ -227,6 +229,9 @@ class Booking extends react__WEBPACK_IMPORTED_MODULE_3__["Component"] {
       },
       __self: this
     }, bookingInfo.map(room => __jsx(_room__WEBPACK_IMPORTED_MODULE_4__["Room"], Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, room, {
+      selectRoom: selectRoom,
+      deSelectRoom: deSelectRoom,
+      key: room.roomId,
       __source: {
         fileName: _jsxFileName,
         lineNumber: 55
@@ -241,20 +246,7 @@ class Booking extends react__WEBPACK_IMPORTED_MODULE_3__["Component"] {
         lineNumber: 58
       },
       __self: this
-    }, "Submit")); // return (<BookingContainer>
-    //     <RoomsContainer>
-    //         {
-    //             rooms.map((room) => {
-    //                 return <Room {...room}
-    //                     key={room.roomId}
-    //                     selectOccupant={selectOccupant}
-    //                     selected={selectedRoomIds.includes(room.roomId)}
-    //                     onSelectionChange={this.onSelectionChange.bind(this, room)} />
-    //             })
-    //         }
-    //     </RoomsContainer>
-    //     <button type="submit" data-testid="submit" onClick={this.saveBooking}>Submit</button>
-    // </BookingContainer>);
+    }, "Submit"));
   }
 
 }
@@ -430,21 +422,23 @@ class Room extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
   }
 
   render() {
-    debugger;
     const {
       roomId,
       title,
-      available,
+      hideOption,
       selected,
-      onSelectionChange,
-      selectOccupant,
-      occupants = {}
+      selectRoom,
+      occupants = {},
+      active,
+      deSelectRoom
     } = this.props;
     return __jsx(_common_card__WEBPACK_IMPORTED_MODULE_2__["AppCard"], {
+      roomId: roomId,
       title: title,
-      selected: selected,
-      selectable: available,
-      onSelectionChange: onSelectionChange,
+      hideOption: hideOption,
+      active: active,
+      selectRoom: selectRoom,
+      deSelectRoom: deSelectRoom,
       testId: roomId,
       __source: {
         fileName: _jsxFileName,
@@ -454,7 +448,6 @@ class Room extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
     }, __jsx(_room_form__WEBPACK_IMPORTED_MODULE_3__["RoomForm"], {
       selected: selected,
       occupants: occupants[roomId],
-      selectOccupant: this.selectOccupant,
       __source: {
         fileName: _jsxFileName,
         lineNumber: 18
@@ -517,69 +510,64 @@ const CardContent = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.div
     `}
 `;
 class AppCard extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
-  static getDerivedStateFromProps(nextProps, prevState) {
-    if (prevState.selected !== nextProps.selected) {
-      return {
-        selected: nextProps.selected
-      };
-    }
+  constructor(props) {
+    super(props);
 
-    return null;
-  }
-
-  constructor() {
-    super();
-
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "toggleSelection", () => {
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "handleChange", e => {
       const {
-        selected
+        roomId,
+        deSelectRoom,
+        selectRoom
       } = this.props;
-      this.props.onSelectionChange(!selected);
-    });
 
-    this.state = {
-      selected: false
-    };
+      if (e.target.checked) {
+        selectRoom(roomId);
+      } else {
+        deSelectRoom(roomId);
+      }
+
+      ;
+    });
   }
 
   render() {
     const {
       title,
       children,
-      selectable,
+      hideOption,
       selected,
-      testId
+      testId,
+      active
     } = this.props;
-    const shouldDisable = selectable ? !this.state.selected : false;
     return __jsx(Card, {
-      disabled: shouldDisable,
+      disabled: !active,
       "data-testid": `room-${testId}`,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 65
+        lineNumber: 55
       },
       __self: this
     }, __jsx(CardTitle, {
-      disabled: shouldDisable,
+      disabled: !active,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 66
+        lineNumber: 56
       },
       __self: this
-    }, selectable && __jsx("input", {
+    }, !hideOption && __jsx("input", {
       type: "checkbox",
-      checked: selected,
-      onChange: this.toggleSelection,
+      checked: active,
+      onChange: this.handleChange,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 68
+        lineNumber: 58
       },
       __self: this
     }), title), __jsx(CardContent, {
-      disabled: shouldDisable,
+      disabled: !active,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 71
+        lineNumber: 61
       },
       __self: this
     }, children));
@@ -885,10 +873,12 @@ __webpack_require__.r(__webpack_exports__);
 function activeRooms(state = 1, action) {
   switch (action.type) {
     case _actions_creators__WEBPACK_IMPORTED_MODULE_2__["actionTypes"].SELECT_ROOM:
-      return action.roomId + 1;
+      {
+        return action.roomId + 1;
+      }
 
     case _actions_creators__WEBPACK_IMPORTED_MODULE_2__["actionTypes"].DESELECT_ROOM:
-      return action.roomId + 1;
+      return action.roomId;
 
     default:
       return state;
@@ -897,24 +887,25 @@ function activeRooms(state = 1, action) {
 
 function occupantSelectionInfo(state = [{
   adult: 1,
-  children: 0
+  children: 0,
+  roomId: 0
 }], action) {
   switch (action.type) {
     case _actions_creators__WEBPACK_IMPORTED_MODULE_2__["actionTypes"].SELECT_OCCUPANT:
       {
-        return state.filter(occupantInfo => occupantInfo.roomId !== action.roomId).concat(action.occupantInfo);
+        return state.filter(occupantInfo => occupantInfo.id !== action.roomId).concat(action.occupantInfo);
       }
 
     case _actions_creators__WEBPACK_IMPORTED_MODULE_2__["actionTypes"].SELECT_ROOM:
       {
         const activeRooms = action.roomId + 1;
-        return state.filter(occupantInfo => occupantInfo.roomId <= activeRooms);
+        return state.filter(occupantInfo => occupantInfo.id <= activeRooms);
       }
 
     case _actions_creators__WEBPACK_IMPORTED_MODULE_2__["actionTypes"].DESELECT_ROOM:
       {
         const activeRooms = action.roomId + 1;
-        return state.filter(occupantInfo => occupantInfo.roomId > activeRooms);
+        return state.filter(occupantInfo => occupantInfo.id > activeRooms);
       }
 
     default:
@@ -937,23 +928,24 @@ const roomInfo = Object(reselect__WEBPACK_IMPORTED_MODULE_3__["createSelector"])
     children: 0
   };
   const currentRoomInfo = _app_config__WEBPACK_IMPORTED_MODULE_4__["defaultRoomInfo"].map(roomInfo => {
-    const id = roomInfo.id;
-    const occupantInfo = occupantSelectionInfo.find(occInfo => occInfo.id === id);
+    const roomId = roomInfo.roomId;
+    const occupantInfo = occupantSelectionInfo.find(occInfo => occInfo.roomId === roomId);
     return occupantInfo ? Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, roomInfo, {
       occupantInfo,
-      active: true
+      active: true,
+      hideOption: roomId === 0 ? true : false
     }) : Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, roomInfo, {
       defaultRoom,
-      active: false
+      active: roomId + 1 <= activeRooms,
+      hideOption: roomId === 0 ? true : false
     });
   });
-  debugger;
   return currentRoomInfo;
 });
 
 /***/ }),
 
-/***/ 3:
+/***/ 4:
 /*!******************************!*\
   !*** multi ./pages/index.js ***!
   \******************************/
