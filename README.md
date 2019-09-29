@@ -13,6 +13,7 @@ yarn dev
 ## Run cypress tests
 
 ``` yarn test or npm run test ```
-Note: Local dev server should be on, when cypress test during this time.
+
+Note: Local dev server should be on, as dependency to run cypress test
 
 
