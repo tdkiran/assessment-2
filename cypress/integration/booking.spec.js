@@ -1,4 +1,11 @@
 describe('Booking tab test', function () {
+    before(function () {
+        localStorage.clear();
+    });
+
+    //TODO: The test are dependent on each other and proceeding with the state
+    // set by previous test. should make this test autonomous / independent of each other.
+
     it('Test booking tab', function () {
         cy.visit('http://localhost:3000/')
     });
