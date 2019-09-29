@@ -3,19 +3,19 @@ import { AppCard } from '../common/card';
 import { RoomForm } from './room-form';
 
 export class Room extends Component {
-    selectOccupant = () => {
+    handleOccupantSelection = () => {
         this.props.selectOccupant(this.props.roomId)
     }
 
     render() {
         const { roomId,
-            title, hideOption, selected,
+            title, hideOption,
             selectRoom,
-            occupants = {}, active, deSelectRoom
+            selectOccupant, active, deSelectRoom, occupantInfo
         } = this.props;
         return (
             <AppCard roomId={roomId} title={title} hideOption={hideOption} active={active} selectRoom={selectRoom} deSelectRoom={deSelectRoom} testId={roomId}>
-                <RoomForm selected={selected} occupants={occupants[roomId]} />
+                <RoomForm selectOccupant={selectOccupant} occupantInfo={occupantInfo} roomId={roomId} />
             </AppCard>);
     }
 }

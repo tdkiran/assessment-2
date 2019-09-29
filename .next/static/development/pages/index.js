@@ -131,60 +131,35 @@ function (_Component) {
       // }
     }
   }, {
-    key: "onSelectionChange",
-    value: function onSelectionChange(room, selected) {
-      var _this$props = this.props,
-          _rooms = _this$props.rooms,
-          selectRoom = _this$props.selectRoom,
-          deSelectRoom = _this$props.deSelectRoom,
-          resetSelection = _this$props.resetSelection;
-
-      var rooms = _rooms.filter(function (r) {
-        return r.available;
-      });
-
-      var index = rooms.indexOf(room);
-      rooms.slice(0, index + 1).forEach(function (_ref) {
-        var roomId = _ref.roomId;
-        return selectRoom(roomId);
-      });
-      rooms.slice(index + 1).forEach(function (_ref2) {
-        var roomId = _ref2.roomId;
-        return deSelectRoom(roomId);
-      });
-
-      if (!selected) {
-        deSelectRoom(room.roomId);
-      }
-    }
-  }, {
     key: "render",
     value: function render() {
-      var _this$props2 = this.props,
-          bookingInfo = _this$props2.bookingInfo,
-          selectRoom = _this$props2.selectRoom,
-          deSelectRoom = _this$props2.deSelectRoom;
+      var _this$props = this.props,
+          bookingInfo = _this$props.bookingInfo,
+          selectRoom = _this$props.selectRoom,
+          deSelectRoom = _this$props.deSelectRoom,
+          selectOccupant = _this$props.selectOccupant;
       console.log(bookingInfo);
       return __jsx(BookingContainer, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 52
+          lineNumber: 39
         },
         __self: this
       }, __jsx(RoomsContainer, {
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 53
+          lineNumber: 40
         },
         __self: this
       }, bookingInfo.map(function (room) {
         return __jsx(_room__WEBPACK_IMPORTED_MODULE_11__["Room"], Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, room, {
           selectRoom: selectRoom,
           deSelectRoom: deSelectRoom,
+          selectOccupant: selectOccupant,
           key: room.roomId,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 55
+            lineNumber: 42
           },
           __self: this
         }));
@@ -194,7 +169,7 @@ function (_Component) {
         onClick: this.saveBooking,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 58
+          lineNumber: 45
         },
         __self: this
       }, "Submit"));
@@ -216,15 +191,21 @@ function (_Component) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RoomForm", function() { return RoomForm; });
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/taggedTemplateLiteral */ "./node_modules/@babel/runtime-corejs2/helpers/esm/taggedTemplateLiteral.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/objectSpread */ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectSpread.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/assertThisInitialized */ "./node_modules/@babel/runtime-corejs2/helpers/esm/assertThisInitialized.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/taggedTemplateLiteral */ "./node_modules/@babel/runtime-corejs2/helpers/esm/taggedTemplateLiteral.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+
+
+
 
 
 
@@ -232,10 +213,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _jsxFileName = "/Users/tdkiran/Desktop/assessment-2/components/booking/room-form.js";
-var __jsx = react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement;
+var __jsx = react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement;
 
 function _templateObject2() {
-  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_5__["default"])(["\n    padding: 10px;\n"]);
+  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_8__["default"])(["\n    padding: 10px;\n"]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -245,7 +226,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_5__["default"])(["\n    display: flex;\n    justify-content: space-between;\n"]);
+  var data = Object(_babel_runtime_corejs2_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_8__["default"])(["\n    display: flex;\n    justify-content: space-between;\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -256,131 +237,155 @@ function _templateObject() {
 
 
 
-var RoomFormContainer = styled_components__WEBPACK_IMPORTED_MODULE_7__["default"].div(_templateObject());
-var FormItem = styled_components__WEBPACK_IMPORTED_MODULE_7__["default"].div(_templateObject2());
+var RoomFormContainer = styled_components__WEBPACK_IMPORTED_MODULE_10__["default"].div(_templateObject());
+var FormItem = styled_components__WEBPACK_IMPORTED_MODULE_10__["default"].div(_templateObject2());
 var RoomForm =
 /*#__PURE__*/
 function (_Component) {
-  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__["default"])(RoomForm, _Component);
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_6__["default"])(RoomForm, _Component);
 
   function RoomForm() {
-    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, RoomForm);
+    var _getPrototypeOf2;
 
-    return Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__["default"])(this, Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__["default"])(RoomForm).apply(this, arguments));
+    var _this;
+
+    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__["default"])(this, RoomForm);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_3__["default"])(this, (_getPrototypeOf2 = Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_4__["default"])(RoomForm)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_5__["default"])(_this), "handleOccupantSelection", function (e) {
+      var _this$props = _this.props,
+          selectOccupant = _this$props.selectOccupant,
+          occupantInfo = _this$props.occupantInfo,
+          roomId = _this$props.roomId;
+      var occupantSelectionInfo = e.target.dataset.type === 'adult' ? {
+        adult: Number(e.target.value),
+        children: occupantInfo.children
+      } : {
+        adult: occupantInfo.adult,
+        children: Number(e.target.value)
+      };
+      debugger;
+      selectOccupant(Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({
+        roomId: roomId
+      }, occupantSelectionInfo));
+    });
+
+    return _this;
   }
 
-  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(RoomForm, [{
-    key: "onChange",
-    value: function onChange(type, e) {
-      var selectOccupant = this.props.selectOccupant;
-      selectOccupant(type, e.target.value);
-    }
-  }, {
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__["default"])(RoomForm, [{
     key: "render",
     value: function render() {
-      var _this$props = this.props,
-          _this$props$occupants = _this$props.occupants,
-          occupants = _this$props$occupants === void 0 ? {} : _this$props$occupants,
-          selected = _this$props.selected;
+      var _this$props$occupantI = this.props.occupantInfo,
+          adult = _this$props$occupantI.adult,
+          children = _this$props$occupantI.children;
+      console.log(adult, children);
       return __jsx(RoomFormContainer, {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 22
-        },
-        __self: this
-      }, __jsx(FormItem, {
         __source: {
           fileName: _jsxFileName,
           lineNumber: 23
         },
         __self: this
+      }, __jsx(FormItem, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 24
+        },
+        __self: this
       }, __jsx("div", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 24
-        },
-        __self: this
-      }, "Adult ", __jsx("br", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 24
-        },
-        __self: this
-      }), "(18+)"), __jsx("select", {
-        defaultValue: occupants.adult || '',
-        onChange: this.onChange.bind(this, 'adult'),
         __source: {
           fileName: _jsxFileName,
           lineNumber: 25
         },
         __self: this
+      }, "Adult ", __jsx("br", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 25
+        },
+        __self: this
+      }), "(18+)"), __jsx("select", {
+        defaultValue: adult,
+        onChange: this.handleOccupantSelection,
+        "data-type": "adult",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 26
+        },
+        __self: this
       }, __jsx("option", {
         value: "1",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 28
-        },
-        __self: this
-      }, "1"), selected && __jsx("option", {
-        value: "2",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 29
-        },
-        __self: this
-      }, "2"))), __jsx(FormItem, {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 32
-        },
-        __self: this
-      }, __jsx("div", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 33
-        },
-        __self: this
-      }, "Children ", __jsx("br", {
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 33
-        },
-        __self: this
-      }), "(0-17)"), __jsx("select", {
-        defaultValue: occupants.children || '',
-        onChange: this.onChange.bind(this, 'children'),
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 34
-        },
-        __self: this
-      }, __jsx("option", {
-        value: "0",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 37
-        },
-        __self: this
-      }, "0"), selected && __jsx(react__WEBPACK_IMPORTED_MODULE_6___default.a.Fragment, null, __jsx("option", {
-        value: "1",
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 39
+          lineNumber: 31
         },
         __self: this
       }, "1"), __jsx("option", {
         value: "2",
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 40
+          lineNumber: 32
         },
         __self: this
-      }, "2")))));
+      }, "2"), "}")), __jsx(FormItem, {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 35
+        },
+        __self: this
+      }, __jsx("div", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 36
+        },
+        __self: this
+      }, "Children ", __jsx("br", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 36
+        },
+        __self: this
+      }), "(0-17)"), __jsx("select", {
+        defaultValue: children,
+        onChange: this.handleOccupantSelection,
+        "data-type": "children",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 37
+        },
+        __self: this
+      }, __jsx("option", {
+        value: "0",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 42
+        },
+        __self: this
+      }, "0"), __jsx("option", {
+        value: "1",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 43
+        },
+        __self: this
+      }, "1"), __jsx("option", {
+        value: "2",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 44
+        },
+        __self: this
+      }, "2"), "}")));
     }
   }]);
 
   return RoomForm;
-}(react__WEBPACK_IMPORTED_MODULE_6__["Component"]);
+}(react__WEBPACK_IMPORTED_MODULE_9__["Component"]);
 
 /***/ }),
 
@@ -435,7 +440,7 @@ function (_Component) {
 
     _this = Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__["default"])(this, (_getPrototypeOf2 = Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__["default"])(Room)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "selectOccupant", function () {
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "handleOccupantSelection", function () {
       _this.props.selectOccupant(_this.props.roomId);
     });
 
@@ -449,12 +454,11 @@ function (_Component) {
           roomId = _this$props.roomId,
           title = _this$props.title,
           hideOption = _this$props.hideOption,
-          selected = _this$props.selected,
           selectRoom = _this$props.selectRoom,
-          _this$props$occupants = _this$props.occupants,
-          occupants = _this$props$occupants === void 0 ? {} : _this$props$occupants,
+          selectOccupant = _this$props.selectOccupant,
           active = _this$props.active,
-          deSelectRoom = _this$props.deSelectRoom;
+          deSelectRoom = _this$props.deSelectRoom,
+          occupantInfo = _this$props.occupantInfo;
       return __jsx(_common_card__WEBPACK_IMPORTED_MODULE_8__["AppCard"], {
         roomId: roomId,
         title: title,
@@ -469,8 +473,9 @@ function (_Component) {
         },
         __self: this
       }, __jsx(_room_form__WEBPACK_IMPORTED_MODULE_9__["RoomForm"], {
-        selected: selected,
-        occupants: occupants[roomId],
+        selectOccupant: selectOccupant,
+        occupantInfo: occupantInfo,
+        roomId: roomId,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 18
@@ -10621,7 +10626,6 @@ __webpack_require__.r(__webpack_exports__);
 var mapDispatchToProps = {
   selectRoom: _reducers_actions_creators__WEBPACK_IMPORTED_MODULE_3__["selectRoom"],
   deSelectRoom: _reducers_actions_creators__WEBPACK_IMPORTED_MODULE_3__["deSelectRoom"],
-  resetSelection: _reducers_actions_creators__WEBPACK_IMPORTED_MODULE_3__["resetSelection"],
   selectOccupant: _reducers_actions_creators__WEBPACK_IMPORTED_MODULE_3__["selectOccupant"],
   initState: _reducers_actions_creators__WEBPACK_IMPORTED_MODULE_3__["initState"]
 };
@@ -10678,12 +10682,10 @@ var resetSelection = function resetSelection() {
     type: actionTypes.RESET_SELECTION
   };
 };
-var selectOccupant = function selectOccupant(roomId, occupant_type, qty) {
+var selectOccupant = function selectOccupant(occupantInfo) {
   return {
     type: actionTypes.SELECT_OCCUPANT,
-    roomId: roomId,
-    occupant_type: occupant_type,
-    qty: qty
+    occupantInfo: occupantInfo
   };
 };
 var initState = function initState(state) {
@@ -10747,26 +10749,25 @@ function occupantSelectionInfo() {
   switch (action.type) {
     case _actions_creators__WEBPACK_IMPORTED_MODULE_2__["actionTypes"].SELECT_OCCUPANT:
       {
-        return state.filter(function (occupantInfo) {
-          return occupantInfo.id !== action.roomId;
-        }).concat(action.occupantInfo);
+        var newOccupantInfo = state.filter(function (occupantInfo) {
+          return occupantInfo.roomId !== action.occupantInfo.roomId;
+        }).concat([action.occupantInfo]);
+        return newOccupantInfo;
       }
 
     case _actions_creators__WEBPACK_IMPORTED_MODULE_2__["actionTypes"].SELECT_ROOM:
       {
-        var _activeRooms = action.roomId + 1;
-
+        var _activeRooms = action.roomId;
         return state.filter(function (occupantInfo) {
-          return occupantInfo.id <= _activeRooms;
+          return occupantInfo.roomId <= _activeRooms;
         });
       }
 
     case _actions_creators__WEBPACK_IMPORTED_MODULE_2__["actionTypes"].DESELECT_ROOM:
       {
-        var _activeRooms2 = action.roomId + 1;
-
+        var _activeRooms2 = action.roomId;
         return state.filter(function (occupantInfo) {
-          return occupantInfo.id > _activeRooms2;
+          return occupantInfo.roomId < _activeRooms2;
         });
       }
 
@@ -10803,7 +10804,7 @@ var roomInfo = Object(reselect__WEBPACK_IMPORTED_MODULE_3__["createSelector"])(g
       active: true,
       hideOption: roomId === 0 ? true : false
     }) : Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, roomInfo, {
-      defaultRoom: defaultRoom,
+      occupantInfo: defaultRoom,
       active: roomId + 1 <= activeRooms,
       hideOption: roomId === 0 ? true : false
     });

@@ -19,8 +19,8 @@ export const deSelectRoom = (roomId) => {
 export const resetSelection = () => {
     return { type: actionTypes.RESET_SELECTION };
 }
-export const selectOccupant = (roomId, occupant_type, qty) => {
-    return { type: actionTypes.SELECT_OCCUPANT, roomId, occupant_type, qty };
+export const selectOccupant = (occupantInfo) => {
+    return { type: actionTypes.SELECT_OCCUPANT, occupantInfo };
 }
 
 export const initState = (state) => {

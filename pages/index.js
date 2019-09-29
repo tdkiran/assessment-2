@@ -12,7 +12,6 @@ import { roomInfo } from '../reducers'
 const mapDispatchToProps = {
   selectRoom: selectRoom,
   deSelectRoom: deSelectRoom,
-  resetSelection: resetSelection,
   selectOccupant: selectOccupant,
   initState: initState
 }

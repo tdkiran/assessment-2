@@ -2262,12 +2262,10 @@ const resetSelection = () => {
     type: actionTypes.RESET_SELECTION
   };
 };
-const selectOccupant = (roomId, occupant_type, qty) => {
+const selectOccupant = occupantInfo => {
   return {
     type: actionTypes.SELECT_OCCUPANT,
-    roomId,
-    occupant_type,
-    qty
+    occupantInfo
   };
 };
 const initState = state => {
@@ -2327,19 +2325,20 @@ function occupantSelectionInfo(state = [{
   switch (action.type) {
     case _actions_creators__WEBPACK_IMPORTED_MODULE_2__["actionTypes"].SELECT_OCCUPANT:
       {
-        return state.filter(occupantInfo => occupantInfo.id !== action.roomId).concat(action.occupantInfo);
+        const newOccupantInfo = state.filter(occupantInfo => occupantInfo.roomId !== action.occupantInfo.roomId).concat([action.occupantInfo]);
+        return newOccupantInfo;
       }
 
     case _actions_creators__WEBPACK_IMPORTED_MODULE_2__["actionTypes"].SELECT_ROOM:
       {
-        const activeRooms = action.roomId + 1;
-        return state.filter(occupantInfo => occupantInfo.id <= activeRooms);
+        const activeRooms = action.roomId;
+        return state.filter(occupantInfo => occupantInfo.roomId <= activeRooms);
       }
 
     case _actions_creators__WEBPACK_IMPORTED_MODULE_2__["actionTypes"].DESELECT_ROOM:
       {
-        const activeRooms = action.roomId + 1;
-        return state.filter(occupantInfo => occupantInfo.id > activeRooms);
+        const activeRooms = action.roomId;
+        return state.filter(occupantInfo => occupantInfo.roomId < activeRooms);
       }
 
     default:
@@ -2369,7 +2368,7 @@ const roomInfo = Object(reselect__WEBPACK_IMPORTED_MODULE_3__["createSelector"])
       active: true,
       hideOption: roomId === 0 ? true : false
     }) : Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, roomInfo, {
-      defaultRoom,
+      occupantInfo: defaultRoom,
       active: roomId + 1 <= activeRooms,
       hideOption: roomId === 0 ? true : false
     });

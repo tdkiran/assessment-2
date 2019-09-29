@@ -31,28 +31,15 @@ export class Booking extends Component {
         localStorage.setItem('bookings', JSON.stringify(appState));
     }
 
-    onSelectionChange(room, selected) {
-        const { rooms: _rooms, selectRoom, deSelectRoom, resetSelection } = this.props;
-        const rooms = _rooms.filter(r => r.available);
-        const index = rooms.indexOf(room);
-
-        rooms.slice(0, index + 1).forEach(({ roomId }) => selectRoom(roomId));
-
-        rooms.slice(index + 1).forEach(({ roomId }) => deSelectRoom(roomId));
-
-        if (!selected) {
-            deSelectRoom(room.roomId);
-        }
-    }
 
     render() {
-        const { bookingInfo, selectRoom, deSelectRoom } = this.props;
+        const { bookingInfo, selectRoom, deSelectRoom, selectOccupant } = this.props;
         console.log(bookingInfo);
         return (
             <BookingContainer>
                 <RoomsContainer>
                     {bookingInfo.map(room => (
-                        <Room {...room} selectRoom={selectRoom} deSelectRoom={deSelectRoom} key={room.roomId} />))
+                        <Room {...room} selectRoom={selectRoom} deSelectRoom={deSelectRoom} selectOccupant={selectOccupant} key={room.roomId} />))
                     }
                 </RoomsContainer>
                 <button type="submit" data-testid="submit" onClick={this.saveBooking}>Submit</button>

@@ -12668,12 +12668,10 @@ var resetSelection = function resetSelection() {
     type: actionTypes.RESET_SELECTION
   };
 };
-var selectOccupant = function selectOccupant(roomId, occupant_type, qty) {
+var selectOccupant = function selectOccupant(occupantInfo) {
   return {
     type: actionTypes.SELECT_OCCUPANT,
-    roomId: roomId,
-    occupant_type: occupant_type,
-    qty: qty
+    occupantInfo: occupantInfo
   };
 };
 var initState = function initState(state) {
@@ -12737,26 +12735,25 @@ function occupantSelectionInfo() {
   switch (action.type) {
     case _actions_creators__WEBPACK_IMPORTED_MODULE_2__["actionTypes"].SELECT_OCCUPANT:
       {
-        return state.filter(function (occupantInfo) {
-          return occupantInfo.id !== action.roomId;
-        }).concat(action.occupantInfo);
+        var newOccupantInfo = state.filter(function (occupantInfo) {
+          return occupantInfo.roomId !== action.occupantInfo.roomId;
+        }).concat([action.occupantInfo]);
+        return newOccupantInfo;
       }
 
     case _actions_creators__WEBPACK_IMPORTED_MODULE_2__["actionTypes"].SELECT_ROOM:
       {
-        var _activeRooms = action.roomId + 1;
-
+        var _activeRooms = action.roomId;
         return state.filter(function (occupantInfo) {
-          return occupantInfo.id <= _activeRooms;
+          return occupantInfo.roomId <= _activeRooms;
         });
       }
 
     case _actions_creators__WEBPACK_IMPORTED_MODULE_2__["actionTypes"].DESELECT_ROOM:
       {
-        var _activeRooms2 = action.roomId + 1;
-
+        var _activeRooms2 = action.roomId;
         return state.filter(function (occupantInfo) {
-          return occupantInfo.id > _activeRooms2;
+          return occupantInfo.roomId < _activeRooms2;
         });
       }
 
@@ -12793,7 +12790,7 @@ var roomInfo = Object(reselect__WEBPACK_IMPORTED_MODULE_3__["createSelector"])(g
       active: true,
       hideOption: roomId === 0 ? true : false
     }) : Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, roomInfo, {
-      defaultRoom: defaultRoom,
+      occupantInfo: defaultRoom,
       active: roomId + 1 <= activeRooms,
       hideOption: roomId === 0 ? true : false
     });

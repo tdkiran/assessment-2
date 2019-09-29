@@ -18,19 +18,20 @@ function activeRooms(state = 1, action) {
 function occupantSelectionInfo(state = [{ adult: 1, children: 0, roomId: 0 }], action) {
     switch (action.type) {
         case actionTypes.SELECT_OCCUPANT: {
-            return state
-                .filter(occupantInfo => occupantInfo.id !== action.roomId)
-                .concat(action.occupantInfo);
+            const newOccupantInfo = state
+                .filter(occupantInfo => occupantInfo.roomId !== action.occupantInfo.roomId)
+                .concat([action.occupantInfo]);
+            return newOccupantInfo;
         }
 
         case actionTypes.SELECT_ROOM: {
-            const activeRooms = action.roomId + 1;
-            return state.filter(occupantInfo => occupantInfo.id <= activeRooms);
+            const activeRooms = action.roomId;
+            return state.filter(occupantInfo => occupantInfo.roomId <= activeRooms);
         }
 
         case actionTypes.DESELECT_ROOM: {
-            const activeRooms = action.roomId + 1;
-            return state.filter(occupantInfo => occupantInfo.id > activeRooms);
+            const activeRooms = action.roomId;
+            return state.filter(occupantInfo => occupantInfo.roomId < activeRooms);
         }
 
         default:
@@ -53,7 +54,7 @@ export const roomInfo = createSelector(getActiveRooms, getOccupantSelectionInfo,
     const currentRoomInfo = defaultRoomInfo.map(roomInfo => {
         const roomId = roomInfo.roomId;
         const occupantInfo = occupantSelectionInfo.find(occInfo => occInfo.roomId === roomId);
-        return occupantInfo ? { ...roomInfo, occupantInfo, active: true, hideOption: (roomId === 0 ? true : false) } : { ...roomInfo, defaultRoom, active: (roomId + 1 <= activeRooms), hideOption: (roomId === 0 ? true : false) };
+        return occupantInfo ? { ...roomInfo, occupantInfo, active: true, hideOption: (roomId === 0 ? true : false) } : { ...roomInfo, occupantInfo: defaultRoom, active: (roomId + 1 <= activeRooms), hideOption: (roomId === 0 ? true : false) };
     });
     return currentRoomInfo;
 });

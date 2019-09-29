@@ -11,34 +11,38 @@ const FormItem = styled.div`
 `;
 
 export class RoomForm extends Component {
-    onChange(type, e) {
-        const { selectOccupant } = this.props;
-
-        selectOccupant(type, e.target.value);
+    handleOccupantSelection = (e) => {
+        const { selectOccupant, occupantInfo, roomId } = this.props;
+        const occupantSelectionInfo = e.target.dataset.type === 'adult' ? { adult: Number(e.target.value), children: occupantInfo.children } : { adult: occupantInfo.adult, children: Number(e.target.value) };
+        debugger
+        selectOccupant({ roomId, ...occupantSelectionInfo });
     }
     render() {
-        const { occupants = {}, selected } = this.props;
-
+        const { occupantInfo: { adult, children } } = this.props;
+        console.log(adult, children);
         return (<RoomFormContainer>
             <FormItem>
                 <div>Adult <br />(18+)</div>
                 <select
-                    defaultValue={occupants.adult || ''}
-                    onChange={this.onChange.bind(this, 'adult')}>
+                    defaultValue={adult}
+                    onChange={this.handleOccupantSelection}
+                    data-type="adult"
+                >
                     <option value="1">1</option>
-                    {selected && (<option value="2">2</option>)}
+                    <option value="2">2</option>}
                 </select>
             </FormItem>
             <FormItem>
                 <div>Children <br />(0-17)</div>
                 <select
-                    defaultValue={occupants.children || ''}
-                    onChange={this.onChange.bind(this, 'children')}>
+                    defaultValue={children}
+                    onChange={this.handleOccupantSelection}
+                    data-type="children"
+                >
                     <option value="0">0</option>
-                    {selected && (<>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                    </>)}
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    }
                 </select>
             </FormItem>
         </RoomFormContainer>);
