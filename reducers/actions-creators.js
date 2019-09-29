@@ -23,6 +23,6 @@ export const selectOccupant = (occupantInfo) => {
     return { type: actionTypes.SELECT_OCCUPANT, occupantInfo };
 }
 
-export const initState = (state) => {
-    return { type: actionTypes.INIT_STATE, state };
+export const initState = state => {
+    return { type: actionTypes.INIT_STATE, ...state };
 }

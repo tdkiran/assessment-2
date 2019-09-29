@@ -18,12 +18,12 @@ export class Booking extends Component {
     }
 
     componentDidMount() {
-        // const { initState } = this.props;
-        // const localState = JSON.parse(localStorage.getItem('bookings')) || null;
+        const { initState } = this.props;
+        const localState = JSON.parse(localStorage.getItem('bookings')) || null;
 
-        // if (localState) {
-        //     initState(localState);
-        // }
+        if (localState) {
+            initState(localState);
+        }
     }
 
     saveBooking = () => {

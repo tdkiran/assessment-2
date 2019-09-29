@@ -8,10 +8,15 @@ function activeRooms(state = 1, action) {
         case actionTypes.SELECT_ROOM: {
             return action.roomId + 1;
         }
-        case actionTypes.DESELECT_ROOM:
+        case actionTypes.DESELECT_ROOM: {
             return action.roomId;
-        default:
+        }
+        case actionTypes.INIT_STATE: {
+            return action.activeRooms;
+        }
+        default: {
             return state
+        }
     }
 }
 
@@ -34,8 +39,14 @@ function occupantSelectionInfo(state = [{ adult: 1, children: 0, roomId: 0 }], a
             return state.filter(occupantInfo => occupantInfo.roomId < activeRooms);
         }
 
-        default:
-            return state
+        case actionTypes.INIT_STATE: {
+            debugger
+            return action.occupantSelectionInfo;
+        }
+
+        default: {
+            return state;
+        }
     }
 }
 // Root Reducer

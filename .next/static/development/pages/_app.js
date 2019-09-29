@@ -12642,6 +12642,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "resetSelection", function() { return resetSelection; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "selectOccupant", function() { return selectOccupant; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "initState", function() { return initState; });
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/objectSpread */ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectSpread.js");
+
 // TYPES
 var actionTypes = {
   SELECT_ROOM: 'SELECT_ROOM',
@@ -12675,10 +12677,9 @@ var selectOccupant = function selectOccupant(occupantInfo) {
   };
 };
 var initState = function initState(state) {
-  return {
-    type: actionTypes.INIT_STATE,
-    state: state
-  };
+  return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    type: actionTypes.INIT_STATE
+  }, state);
 };
 
 /***/ }),
@@ -12717,10 +12718,19 @@ function activeRooms() {
       }
 
     case _actions_creators__WEBPACK_IMPORTED_MODULE_2__["actionTypes"].DESELECT_ROOM:
-      return action.roomId;
+      {
+        return action.roomId;
+      }
+
+    case _actions_creators__WEBPACK_IMPORTED_MODULE_2__["actionTypes"].INIT_STATE:
+      {
+        return action.activeRooms;
+      }
 
     default:
-      return state;
+      {
+        return state;
+      }
   }
 }
 
@@ -12757,8 +12767,16 @@ function occupantSelectionInfo() {
         });
       }
 
+    case _actions_creators__WEBPACK_IMPORTED_MODULE_2__["actionTypes"].INIT_STATE:
+      {
+        debugger;
+        return action.occupantSelectionInfo;
+      }
+
     default:
-      return state;
+      {
+        return state;
+      }
   }
 } // Root Reducer
 
