@@ -12769,7 +12769,6 @@ function occupantSelectionInfo() {
 
     case _actions_creators__WEBPACK_IMPORTED_MODULE_2__["actionTypes"].INIT_STATE:
       {
-        debugger;
         return action.occupantSelectionInfo;
       }
 

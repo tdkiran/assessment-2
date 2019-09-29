@@ -40,7 +40,6 @@ function occupantSelectionInfo(state = [{ adult: 1, children: 0, roomId: 0 }], a
         }
 
         case actionTypes.INIT_STATE: {
-            debugger
             return action.occupantSelectionInfo;
         }
 
@@ -65,7 +64,9 @@ export const roomInfo = createSelector(getActiveRooms, getOccupantSelectionInfo,
     const currentRoomInfo = defaultRoomInfo.map(roomInfo => {
         const roomId = roomInfo.roomId;
         const occupantInfo = occupantSelectionInfo.find(occInfo => occInfo.roomId === roomId);
-        return occupantInfo ? { ...roomInfo, occupantInfo, active: true, hideOption: (roomId === 0 ? true : false) } : { ...roomInfo, occupantInfo: defaultRoom, active: (roomId + 1 <= activeRooms), hideOption: (roomId === 0 ? true : false) };
+        return occupantInfo ?
+            { ...roomInfo, occupantInfo, active: true, hideOption: (roomId === 0 ? true : false) } :
+            { ...roomInfo, occupantInfo: defaultRoom, active: (roomId + 1 <= activeRooms), hideOption: (roomId === 0 ? true : false) };
     });
     return currentRoomInfo;
 });

@@ -197,17 +197,16 @@ class Booking extends react__WEBPACK_IMPORTED_MODULE_3__["Component"] {
       deSelectRoom,
       selectOccupant
     } = this.props;
-    console.log(bookingInfo);
     return __jsx(BookingContainer, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 39
+        lineNumber: 38
       },
       __self: this
     }, __jsx(RoomsContainer, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 40
+        lineNumber: 39
       },
       __self: this
     }, bookingInfo.map(room => __jsx(_room__WEBPACK_IMPORTED_MODULE_4__["Room"], Object(_babel_runtime_corejs2_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, room, {
@@ -217,7 +216,7 @@ class Booking extends react__WEBPACK_IMPORTED_MODULE_3__["Component"] {
       key: room.roomId,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 42
+        lineNumber: 41
       },
       __self: this
     })))), __jsx("button", {
@@ -226,7 +225,7 @@ class Booking extends react__WEBPACK_IMPORTED_MODULE_3__["Component"] {
       onClick: this.saveBooking,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 45
+        lineNumber: 44
       },
       __self: this
     }, "Submit"));
@@ -282,7 +281,6 @@ class RoomForm extends react__WEBPACK_IMPORTED_MODULE_2__["Component"] {
         adult: occupantInfo.adult,
         children: Number(e.target.value)
       };
-      debugger;
       selectOccupant(Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({
         roomId
       }, occupantSelectionInfo));
@@ -296,100 +294,99 @@ class RoomForm extends react__WEBPACK_IMPORTED_MODULE_2__["Component"] {
         children
       }
     } = this.props;
-    console.log(adult, children);
     return __jsx(RoomFormContainer, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 23
+        lineNumber: 21
       },
       __self: this
     }, __jsx(FormItem, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 24
+        lineNumber: 22
       },
       __self: this
     }, __jsx("div", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 25
+        lineNumber: 23
       },
       __self: this
     }, "Adult ", __jsx("br", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 25
+        lineNumber: 23
       },
       __self: this
     }), "(18+)"), __jsx("select", {
-      defaultValue: adult,
+      value: adult,
       onChange: this.handleOccupantSelection,
       "data-type": "adult",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 26
+        lineNumber: 24
       },
       __self: this
     }, __jsx("option", {
       value: "1",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 31
+        lineNumber: 29
       },
       __self: this
     }, "1"), __jsx("option", {
       value: "2",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 32
+        lineNumber: 30
       },
       __self: this
     }, "2"), "}")), __jsx(FormItem, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 35
+        lineNumber: 33
       },
       __self: this
     }, __jsx("div", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 36
+        lineNumber: 34
       },
       __self: this
     }, "Children ", __jsx("br", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 36
+        lineNumber: 34
       },
       __self: this
     }), "(0-17)"), __jsx("select", {
-      defaultValue: children,
+      value: children,
       onChange: this.handleOccupantSelection,
       "data-type": "children",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 37
+        lineNumber: 35
       },
       __self: this
     }, __jsx("option", {
       value: "0",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 42
+        lineNumber: 40
       },
       __self: this
     }, "0"), __jsx("option", {
       value: "1",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 43
+        lineNumber: 41
       },
       __self: this
     }, "1"), __jsx("option", {
       value: "2",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 44
+        lineNumber: 42
       },
       __self: this
     }, "2"), "}")));
@@ -927,7 +924,6 @@ function occupantSelectionInfo(state = [{
 
     case _actions_creators__WEBPACK_IMPORTED_MODULE_2__["actionTypes"].INIT_STATE:
       {
-        debugger;
         return action.occupantSelectionInfo;
       }
 

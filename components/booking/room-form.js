@@ -14,17 +14,15 @@ export class RoomForm extends Component {
     handleOccupantSelection = (e) => {
         const { selectOccupant, occupantInfo, roomId } = this.props;
         const occupantSelectionInfo = e.target.dataset.type === 'adult' ? { adult: Number(e.target.value), children: occupantInfo.children } : { adult: occupantInfo.adult, children: Number(e.target.value) };
-        debugger
         selectOccupant({ roomId, ...occupantSelectionInfo });
     }
     render() {
         const { occupantInfo: { adult, children } } = this.props;
-        console.log(adult, children);
         return (<RoomFormContainer>
             <FormItem>
                 <div>Adult <br />(18+)</div>
                 <select
-                    defaultValue={adult}
+                    value={adult}
                     onChange={this.handleOccupantSelection}
                     data-type="adult"
                 >
@@ -35,7 +33,7 @@ export class RoomForm extends Component {
             <FormItem>
                 <div>Children <br />(0-17)</div>
                 <select
-                    defaultValue={children}
+                    value={children}
                     onChange={this.handleOccupantSelection}
                     data-type="children"
                 >

@@ -65,8 +65,8 @@ describe('Booking tab test', function () {
         //refresh and check whether the state is persisted.
         cy.reload();
         // validate the state again
-        // cy.get('[data-testid=room-1]').find('select').first().should('have.value', '2');
-        // cy.get('[data-testid=room-1]').find('select').last().should('have.value', '2');
+        cy.get('[data-testid=room-1]').find('select').first().should('have.value', '2');
+        cy.get('[data-testid=room-1]').find('select').last().should('have.value', '2');
         cy.get('[data-testid=room-0]').should('not.have.attr', 'disabled');
         cy.get('[data-testid=room-1]').should('not.have.attr', 'disabled');
         cy.get('[data-testid=room-2]').should('have.attr', 'disabled');

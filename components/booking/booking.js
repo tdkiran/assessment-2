@@ -34,7 +34,6 @@ export class Booking extends Component {
 
     render() {
         const { bookingInfo, selectRoom, deSelectRoom, selectOccupant } = this.props;
-        console.log(bookingInfo);
         return (
             <BookingContainer>
                 <RoomsContainer>
