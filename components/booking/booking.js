@@ -47,7 +47,17 @@ export class Booking extends Component {
 
     render() {
         const { bookingInfo } = this.props;
-        return <> {bookingInfo.map(room => <div> Kiran </div>)}</>
+        console.log(bookingInfo);
+        return (
+            <BookingContainer>
+                <RoomsContainer>
+                    {bookingInfo.map(room => (
+                        <Room {...room} />))
+                    }
+                </RoomsContainer>
+                <button type="submit" data-testid="submit" onClick={this.saveBooking}>Submit</button>
+            </BookingContainer>
+        );
         // return (<BookingContainer>
         //     <RoomsContainer>
         //         {

@@ -12725,7 +12725,10 @@ function activeRooms() {
 }
 
 function occupantSelectionInfo() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [{
+    adult: 1,
+    children: 0
+  }];
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {
@@ -12782,12 +12785,15 @@ var roomInfo = Object(reselect__WEBPACK_IMPORTED_MODULE_3__["createSelector"])(g
     var occupantInfo = occupantSelectionInfo.find(function (occInfo) {
       return occInfo.id === id;
     });
-    occupantInfo ? Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, roomInfo, {
-      occupantInfo: occupantInfo
+    return occupantInfo ? Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, roomInfo, {
+      occupantInfo: occupantInfo,
+      active: true
     }) : Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, roomInfo, {
-      defaultRoom: defaultRoom
+      defaultRoom: defaultRoom,
+      active: false
     });
   });
+  debugger;
   return currentRoomInfo;
 });
 

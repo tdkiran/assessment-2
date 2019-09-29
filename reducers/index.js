@@ -14,7 +14,7 @@ function activeRooms(state = 1, action) {
     }
 }
 
-function occupantSelectionInfo(state = [], action) {
+function occupantSelectionInfo(state = [{ adult: 1, children: 0 }], action) {
     switch (action.type) {
         case actionTypes.SELECT_OCCUPANT: {
             return state
@@ -52,7 +52,8 @@ export const roomInfo = createSelector(getActiveRooms, getOccupantSelectionInfo,
     const currentRoomInfo = defaultRoomInfo.map(roomInfo => {
         const id = roomInfo.id;
         const occupantInfo = occupantSelectionInfo.find(occInfo => occInfo.id === id);
-        occupantInfo ? { ...roomInfo, occupantInfo } : { ...roomInfo, defaultRoom };
+        return occupantInfo ? { ...roomInfo, occupantInfo, active: true } : { ...roomInfo, defaultRoom, active: false };
     });
+    debugger
     return currentRoomInfo;
 });

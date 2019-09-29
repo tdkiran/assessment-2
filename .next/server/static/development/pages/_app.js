@@ -2317,7 +2317,10 @@ function activeRooms(state = 1, action) {
   }
 }
 
-function occupantSelectionInfo(state = [], action) {
+function occupantSelectionInfo(state = [{
+  adult: 1,
+  children: 0
+}], action) {
   switch (action.type) {
     case _actions_creators__WEBPACK_IMPORTED_MODULE_2__["actionTypes"].SELECT_OCCUPANT:
       {
@@ -2358,12 +2361,15 @@ const roomInfo = Object(reselect__WEBPACK_IMPORTED_MODULE_3__["createSelector"])
   const currentRoomInfo = _app_config__WEBPACK_IMPORTED_MODULE_4__["defaultRoomInfo"].map(roomInfo => {
     const id = roomInfo.id;
     const occupantInfo = occupantSelectionInfo.find(occInfo => occInfo.id === id);
-    occupantInfo ? Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, roomInfo, {
-      occupantInfo
+    return occupantInfo ? Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, roomInfo, {
+      occupantInfo,
+      active: true
     }) : Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, roomInfo, {
-      defaultRoom
+      defaultRoom,
+      active: false
     });
   });
+  debugger;
   return currentRoomInfo;
 });
 
