@@ -26,12 +26,15 @@ export class RoomForm extends Component {
         return (
             <RoomFormContainer>
                 <FormItem>
-                    <div>Adult <br />(18+)</div>
+                    <div>
+                        <label for="adult-occupant-selection">Adult</label> <br />(18+)
+                    </div>
                     <select
                         value={adult}
                         onChange={this.handleOccupantSelection}
                         data-type="adult"
                         disabled={!active}
+                        id="adult-occupant-selection"
                     >
                         {listOfAdults &&
                             listOfAdults.map(occupantOptionsTemplate)
@@ -39,12 +42,15 @@ export class RoomForm extends Component {
                     </select>
                 </FormItem>
                 <FormItem>
-                    <div>Children <br />(0-17)</div>
+                    <div>
+                        <label for="children-occupant-selection">Adult</label> <br />(0-17)
+                    </div>
                     <select
                         value={children}
                         onChange={this.handleOccupantSelection}
                         data-type="children"
                         disabled={!active}
+                        id="children-occupant-selection"
                     >
                         {listOfAdults &&
                             listOfChildrens.map(occupantOptionsTemplate)

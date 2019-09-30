@@ -55,8 +55,8 @@ export class AppCard extends Component {
             <Card disabled={!active} data-testid={`room-${testId}`} >
                 <CardTitle disabled={!active}>
                     {!hideOption &&
-                        <input type="checkbox" checked={active} onChange={this.handleChange} />}
-                    {title}
+                        <input type="checkbox" checked={active} onChange={this.handleChange} id="check-room" />}
+                    <label for={"check-room"}> {title} </label>
                 </CardTitle>
                 <CardContent disabled={!active}>
                     {children}
