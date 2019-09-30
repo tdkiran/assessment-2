@@ -22,19 +22,19 @@ export class RoomForm extends Component {
     }
 
     render() {
-        const { occupantInfo: { adult, children }, active } = this.props;
+        const { occupantInfo: { adult, children }, active, roomId } = this.props;
         return (
             <RoomFormContainer>
                 <FormItem>
                     <div>
-                        <label for="adult-occupant-selection">Adult</label> <br />(18+)
+                        <label for={`adult-occupant-selection-room-${roomId}`}>Adult</label> <br />(18+)
                     </div>
                     <select
                         value={adult}
                         onChange={this.handleOccupantSelection}
                         data-type="adult"
                         disabled={!active}
-                        id="adult-occupant-selection"
+                        id={`adult-occupant-selection-room-${roomId}`}
                     >
                         {listOfAdults &&
                             listOfAdults.map(occupantOptionsTemplate)
@@ -43,16 +43,16 @@ export class RoomForm extends Component {
                 </FormItem>
                 <FormItem>
                     <div>
-                        <label for="children-occupant-selection">Adult</label> <br />(0-17)
+                        <label for={`children-occupant-selection-room-${roomId}`}>Children</label> <br />(0-17)
                     </div>
                     <select
                         value={children}
                         onChange={this.handleOccupantSelection}
                         data-type="children"
                         disabled={!active}
-                        id="children-occupant-selection"
+                        id={`children-occupant-selection-room-${roomId}`}
                     >
-                        {listOfAdults &&
+                        {listOfChildrens &&
                             listOfChildrens.map(occupantOptionsTemplate)
                         }
                     </select>

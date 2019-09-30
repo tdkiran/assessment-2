@@ -19,7 +19,7 @@ export class Room extends Component {
                 active={active}
                 selectRoom={selectRoom}
                 deSelectRoom={deSelectRoom}
-                testId={roomId}>
+            >
                 <RoomForm selectOccupant={selectOccupant} occupantInfo={occupantInfo} roomId={roomId} active={active} />
             </AppCard>);
     }

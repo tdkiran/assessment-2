@@ -50,13 +50,15 @@ export class AppCard extends Component {
     }
 
     render() {
-        const { title, children, hideOption, testId, active } = this.props;
+        const { title, children, hideOption, active, roomId } = this.props;
         return (
-            <Card disabled={!active} data-testid={`room-${testId}`} >
+            <Card disabled={!active} data-testid={`room-${roomId}`} >
                 <CardTitle disabled={!active}>
                     {!hideOption &&
-                        <input type="checkbox" checked={active} onChange={this.handleChange} id="check-room" />}
-                    <label for={"check-room"}> {title} </label>
+                        <input type="checkbox" checked={active}
+                            onChange={this.handleChange} id={`check-room-${roomId}`}
+                        />}
+                    <label for={`check-room-${roomId}`}> {title} </label>
                 </CardTitle>
                 <CardContent disabled={!active}>
                     {children}

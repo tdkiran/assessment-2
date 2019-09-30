@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -316,7 +316,8 @@ class RoomForm extends react__WEBPACK_IMPORTED_MODULE_2__["Component"] {
         adult,
         children
       },
-      active
+      active,
+      roomId
     } = this.props;
     return __jsx(RoomFormContainer, {
       __source: {
@@ -337,7 +338,7 @@ class RoomForm extends react__WEBPACK_IMPORTED_MODULE_2__["Component"] {
       },
       __self: this
     }, __jsx("label", {
-      for: "adult-occupant-selection",
+      for: `adult-occupant-selection-room-${roomId}`,
       __source: {
         fileName: _jsxFileName,
         lineNumber: 30
@@ -354,7 +355,7 @@ class RoomForm extends react__WEBPACK_IMPORTED_MODULE_2__["Component"] {
       onChange: this.handleOccupantSelection,
       "data-type": "adult",
       disabled: !active,
-      id: "adult-occupant-selection",
+      id: `adult-occupant-selection-room-${roomId}`,
       __source: {
         fileName: _jsxFileName,
         lineNumber: 32
@@ -373,13 +374,13 @@ class RoomForm extends react__WEBPACK_IMPORTED_MODULE_2__["Component"] {
       },
       __self: this
     }, __jsx("label", {
-      for: "children-occupant-selection",
+      for: `children-occupant-selection-room-${roomId}`,
       __source: {
         fileName: _jsxFileName,
         lineNumber: 46
       },
       __self: this
-    }, "Adult"), " ", __jsx("br", {
+    }, "Children"), " ", __jsx("br", {
       __source: {
         fileName: _jsxFileName,
         lineNumber: 46
@@ -390,13 +391,13 @@ class RoomForm extends react__WEBPACK_IMPORTED_MODULE_2__["Component"] {
       onChange: this.handleOccupantSelection,
       "data-type": "children",
       disabled: !active,
-      id: "children-occupant-selection",
+      id: `children-occupant-selection-room-${roomId}`,
       __source: {
         fileName: _jsxFileName,
         lineNumber: 48
       },
       __self: this
-    }, _app_config__WEBPACK_IMPORTED_MODULE_4__["listOfAdults"] && _app_config__WEBPACK_IMPORTED_MODULE_4__["listOfChildrens"].map(occupantOptionsTemplate))));
+    }, _app_config__WEBPACK_IMPORTED_MODULE_4__["listOfChildrens"] && _app_config__WEBPACK_IMPORTED_MODULE_4__["listOfChildrens"].map(occupantOptionsTemplate))));
   }
 
 }
@@ -451,7 +452,6 @@ class Room extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       active: active,
       selectRoom: selectRoom,
       deSelectRoom: deSelectRoom,
-      testId: roomId,
       __source: {
         fileName: _jsxFileName,
         lineNumber: 15
@@ -532,12 +532,12 @@ class AppCard extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       title,
       children,
       hideOption,
-      testId,
-      active
+      active,
+      roomId
     } = this.props;
     return __jsx(Card, {
       disabled: !active,
-      "data-testid": `room-${testId}`,
+      "data-testid": `room-${roomId}`,
       __source: {
         fileName: _jsxFileName,
         lineNumber: 55
@@ -554,24 +554,24 @@ class AppCard extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
       type: "checkbox",
       checked: active,
       onChange: this.handleChange,
-      id: "check-room",
+      id: `check-room-${roomId}`,
       __source: {
         fileName: _jsxFileName,
         lineNumber: 58
       },
       __self: this
     }), __jsx("label", {
-      for: "check-room",
+      for: `check-room-${roomId}`,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 59
+        lineNumber: 61
       },
       __self: this
     }, " ", title, " ")), __jsx(CardContent, {
       disabled: !active,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 61
+        lineNumber: 63
       },
       __self: this
     }, children));
@@ -972,7 +972,7 @@ const roomInfo = Object(reselect__WEBPACK_IMPORTED_MODULE_3__["createSelector"])
 
 /***/ }),
 
-/***/ 3:
+/***/ 4:
 /*!******************************!*\
   !*** multi ./pages/index.js ***!
   \******************************/

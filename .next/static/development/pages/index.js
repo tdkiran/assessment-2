@@ -277,7 +277,8 @@ function (_Component) {
           _this$props2$occupant = _this$props2.occupantInfo,
           adult = _this$props2$occupant.adult,
           children = _this$props2$occupant.children,
-          active = _this$props2.active;
+          active = _this$props2.active,
+          roomId = _this$props2.roomId;
       return __jsx(RoomFormContainer, {
         __source: {
           fileName: _jsxFileName,
@@ -297,7 +298,7 @@ function (_Component) {
         },
         __self: this
       }, __jsx("label", {
-        "for": "adult-occupant-selection",
+        "for": "adult-occupant-selection-room-".concat(roomId),
         __source: {
           fileName: _jsxFileName,
           lineNumber: 30
@@ -314,7 +315,7 @@ function (_Component) {
         onChange: this.handleOccupantSelection,
         "data-type": "adult",
         disabled: !active,
-        id: "adult-occupant-selection",
+        id: "adult-occupant-selection-room-".concat(roomId),
         __source: {
           fileName: _jsxFileName,
           lineNumber: 32
@@ -333,13 +334,13 @@ function (_Component) {
         },
         __self: this
       }, __jsx("label", {
-        "for": "children-occupant-selection",
+        "for": "children-occupant-selection-room-".concat(roomId),
         __source: {
           fileName: _jsxFileName,
           lineNumber: 46
         },
         __self: this
-      }, "Adult"), " ", __jsx("br", {
+      }, "Children"), " ", __jsx("br", {
         __source: {
           fileName: _jsxFileName,
           lineNumber: 46
@@ -350,13 +351,13 @@ function (_Component) {
         onChange: this.handleOccupantSelection,
         "data-type": "children",
         disabled: !active,
-        id: "children-occupant-selection",
+        id: "children-occupant-selection-room-".concat(roomId),
         __source: {
           fileName: _jsxFileName,
           lineNumber: 48
         },
         __self: this
-      }, _app_config__WEBPACK_IMPORTED_MODULE_10__["listOfAdults"] && _app_config__WEBPACK_IMPORTED_MODULE_10__["listOfChildrens"].map(occupantOptionsTemplate))));
+      }, _app_config__WEBPACK_IMPORTED_MODULE_10__["listOfChildrens"] && _app_config__WEBPACK_IMPORTED_MODULE_10__["listOfChildrens"].map(occupantOptionsTemplate))));
     }
   }]);
 
@@ -442,7 +443,6 @@ function (_Component) {
         active: active,
         selectRoom: selectRoom,
         deSelectRoom: deSelectRoom,
-        testId: roomId,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 15
@@ -553,11 +553,11 @@ function (_Component) {
           title = _this$props2.title,
           children = _this$props2.children,
           hideOption = _this$props2.hideOption,
-          testId = _this$props2.testId,
-          active = _this$props2.active;
+          active = _this$props2.active,
+          roomId = _this$props2.roomId;
       return __jsx(Card, {
         disabled: !active,
-        "data-testid": "room-".concat(testId),
+        "data-testid": "room-".concat(roomId),
         __source: {
           fileName: _jsxFileName,
           lineNumber: 55
@@ -574,24 +574,24 @@ function (_Component) {
         type: "checkbox",
         checked: active,
         onChange: this.handleChange,
-        id: "check-room",
+        id: "check-room-".concat(roomId),
         __source: {
           fileName: _jsxFileName,
           lineNumber: 58
         },
         __self: this
       }), __jsx("label", {
-        "for": "check-room",
+        "for": "check-room-".concat(roomId),
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 59
+          lineNumber: 61
         },
         __self: this
       }, " ", title, " ")), __jsx(CardContent, {
         disabled: !active,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 61
+          lineNumber: 63
         },
         __self: this
       }, children));
@@ -10865,7 +10865,7 @@ var roomInfo = Object(reselect__WEBPACK_IMPORTED_MODULE_3__["createSelector"])(g
 
 /***/ }),
 
-/***/ 0:
+/***/ 1:
 /*!*******************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2F&absolutePagePath=%2FUsers%2Ftdkiran%2FDesktop%2Fassessment-2%2Fpages%2Findex.js ***!
   \*******************************************************************************************************************************/
@@ -10888,5 +10888,5 @@ module.exports = dll_01f9a3fa864a7b7414d8;
 
 /***/ })
 
-},[[0,"static/runtime/webpack.js"]]]);
+},[[1,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=index.js.map
