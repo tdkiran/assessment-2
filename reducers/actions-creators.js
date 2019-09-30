@@ -19,6 +19,7 @@ export const deSelectRoom = (roomId) => {
 export const resetSelection = () => {
     return { type: actionTypes.RESET_SELECTION };
 }
+
 export const selectOccupant = (occupantInfo) => {
     return { type: actionTypes.SELECT_OCCUPANT, occupantInfo };
 }

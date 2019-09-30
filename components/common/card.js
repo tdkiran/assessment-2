@@ -50,7 +50,7 @@ export class AppCard extends Component {
     }
 
     render() {
-        const { title, children, hideOption, selected, testId, active } = this.props;
+        const { title, children, hideOption, testId, active } = this.props;
         return (
             <Card disabled={!active} data-testid={`room-${testId}`} >
                 <CardTitle disabled={!active}>

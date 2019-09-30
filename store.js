@@ -1,9 +1,9 @@
-import { createStore, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import reducer from './reducers';
 
 // init store
-export function initializeStore(initialState = {}) {
+export function initializeStore() {
     return createStore(
         reducer,
         composeWithDevTools(applyMiddleware())

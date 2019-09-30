@@ -1,13 +1,9 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { Booking } from '../components/booking/booking'
-import {
-  selectRoom, selectOccupant,
-  deSelectRoom, getRooms, getSelectedRooms, getOccupants, getSelectedRoomIds,
-  resetSelection, initState
-} from '../reducers/actions-creators';
+import { connect } from 'react-redux';
 
-import { roomInfo } from '../reducers'
+import { Booking } from '../components/booking/booking';
+import { roomInfo } from '../reducers';
+import { selectRoom, selectOccupant, deSelectRoom, initState }
+  from '../reducers/actions-creators';
 
 const mapDispatchToProps = {
   selectRoom: selectRoom,

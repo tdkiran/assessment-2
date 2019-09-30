@@ -12,6 +12,15 @@ const RoomsContainer = styled.div`
     display: flex;
 `;
 
+const SubmitForm = styled.button`
+    padding: 10px;
+    margin-left: 10px;
+    border: solid 2px Gray;
+    border-radius: 5px;
+    background-color: #ddd;
+    font-weight: bold;
+`;
+
 export class Booking extends Component {
     constructor(props) {
         super(props);
@@ -29,6 +38,7 @@ export class Booking extends Component {
     saveBooking = () => {
         const { appState } = this.props;
         localStorage.setItem('bookings', JSON.stringify(appState));
+        alert('Current selection have been saved');
     }
 
 
@@ -41,7 +51,7 @@ export class Booking extends Component {
                         <Room {...room} selectRoom={selectRoom} deSelectRoom={deSelectRoom} selectOccupant={selectOccupant} key={room.roomId} />))
                     }
                 </RoomsContainer>
-                <button type="submit" data-testid="submit" onClick={this.saveBooking}>Submit</button>
+                <SubmitForm type="submit" data-testid="submit" onClick={this.saveBooking}>Submit</SubmitForm>
             </BookingContainer>
         );
     }

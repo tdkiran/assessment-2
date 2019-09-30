@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import { actionTypes } from './actions-creators';
 import { createSelector } from 'reselect';
-import { defaultRoomInfo } from '../app_config';
+import { defaultRoomInfo, defaultSelectedRoomId } from '../app_config';
 
 function activeRooms(state = 1, action) {
     switch (action.type) {
@@ -48,6 +48,7 @@ function occupantSelectionInfo(state = [{ adult: 1, children: 0, roomId: 0 }], a
         }
     }
 }
+
 // Root Reducer
 const reducer = combineReducers({
     activeRooms,
@@ -65,7 +66,7 @@ export const roomInfo = createSelector(getActiveRooms, getOccupantSelectionInfo,
         const roomId = roomInfo.roomId;
         const occupantInfo = occupantSelectionInfo.find(occInfo => occInfo.roomId === roomId);
         return occupantInfo ?
-            { ...roomInfo, occupantInfo, active: true, hideOption: (roomId === 0 ? true : false) } :
+            { ...roomInfo, occupantInfo, active: true, hideOption: (roomId === defaultSelectedRoomId ? true : false) } :
             { ...roomInfo, occupantInfo: defaultRoom, active: (roomId + 1 <= activeRooms), hideOption: (roomId === 0 ? true : false) };
     });
     return currentRoomInfo;

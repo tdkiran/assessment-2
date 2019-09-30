@@ -97,36 +97,40 @@ module.exports =
 /*!*****************************!*\
   !*** ./app_config/index.js ***!
   \*****************************/
-/*! exports provided: defaultRoomInfo, defaultOccupent, defaultSelectedRoomId, listOfAdults, listOfChildrens */
+/*! exports provided: defaultRoomInfo, defaultSelectedRoomId, defaultOccupent, listOfAdults, listOfChildrens */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "defaultRoomInfo", function() { return defaultRoomInfo; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "defaultOccupent", function() { return defaultOccupent; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "defaultSelectedRoomId", function() { return defaultSelectedRoomId; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "defaultOccupent", function() { return defaultOccupent; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "listOfAdults", function() { return listOfAdults; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "listOfChildrens", function() { return listOfChildrens; });
-const defaultRoomInfo = [{
-  roomId: 0,
-  title: 'Room 1'
-}, {
-  roomId: 1,
-  title: 'Room 2'
-}, {
-  roomId: 2,
-  title: 'Room 3'
-}, {
-  roomId: 3,
-  title: 'Room 4'
-}];
+/* harmony import */ var _babel_runtime_corejs2_core_js_array_from__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/array/from */ "./node_modules/@babel/runtime-corejs2/core-js/array/from.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_array_from__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_array_from__WEBPACK_IMPORTED_MODULE_0__);
+
+//Config
+//Default Room
+const defaultNumberOfRooms = 4;
+
+const createDefaultRooms = (current, index) => ({
+  roomId: index,
+  title: `Room ${index + 1}`
+});
+
+const defaultRoomInfo = _babel_runtime_corejs2_core_js_array_from__WEBPACK_IMPORTED_MODULE_0___default()({
+  length: defaultNumberOfRooms
+}, createDefaultRooms);
+const defaultSelectedRoomId = 0; // Default Occupant config
+
 const defaultAdultsOccupent = 1;
 const defaultChild = 0;
 const defaultOccupent = {
   defaultAdultsOccupent,
   defaultChild
-};
-const defaultSelectedRoomId = 0;
+}; //Occupant selections
+
 const listOfAdults = [1, 2];
 const listOfChildrens = [0, 1, 2];
 
@@ -206,6 +210,17 @@ function getOrCreateStore(initialState) {
 
   };
 });
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime-corejs2/core-js/array/from.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/@babel/runtime-corejs2/core-js/array/from.js ***!
+  \*******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! core-js/library/fn/array/from */ "core-js/library/fn/array/from");
 
 /***/ }),
 
@@ -2383,7 +2398,7 @@ const roomInfo = Object(reselect__WEBPACK_IMPORTED_MODULE_3__["createSelector"])
     return occupantInfo ? Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, roomInfo, {
       occupantInfo,
       active: true,
-      hideOption: roomId === 0 ? true : false
+      hideOption: roomId === _app_config__WEBPACK_IMPORTED_MODULE_4__["defaultSelectedRoomId"] ? true : false
     }) : Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, roomInfo, {
       occupantInfo: defaultRoom,
       active: roomId + 1 <= activeRooms,
@@ -2414,7 +2429,7 @@ __webpack_require__.r(__webpack_exports__);
 
  // init store
 
-function initializeStore(initialState = {}) {
+function initializeStore() {
   return Object(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(_reducers__WEBPACK_IMPORTED_MODULE_2__["default"], Object(redux_devtools_extension__WEBPACK_IMPORTED_MODULE_1__["composeWithDevTools"])(Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])()));
 }
 
@@ -2429,6 +2444,17 @@ function initializeStore(initialState = {}) {
 
 module.exports = __webpack_require__(/*! private-next-pages/_app.js */"./pages/_app.js");
 
+
+/***/ }),
+
+/***/ "core-js/library/fn/array/from":
+/*!************************************************!*\
+  !*** external "core-js/library/fn/array/from" ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("core-js/library/fn/array/from");
 
 /***/ }),
 
