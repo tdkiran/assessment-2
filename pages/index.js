@@ -20,4 +20,4 @@ const mapStateToProps = (state) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Booking)
+)(Booking);
