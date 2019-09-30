@@ -159,14 +159,14 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_3___default.a.createElement;
 
 
 
-const BookingContainer = styled_components__WEBPACK_IMPORTED_MODULE_5___default.a.div`
-display: flex;
-flex-direction: column;
-align-items: start
-`;
-const RoomsContainer = styled_components__WEBPACK_IMPORTED_MODULE_5___default.a.div`
-    display: flex;
-`;
+const BookingContainer = styled_components__WEBPACK_IMPORTED_MODULE_5___default.a.div.withConfig({
+  displayName: "booking__BookingContainer",
+  componentId: "sc-1yql2l7-0"
+})(["display:flex;flex-direction:column;align-items:start"]);
+const RoomsContainer = styled_components__WEBPACK_IMPORTED_MODULE_5___default.a.div.withConfig({
+  displayName: "booking__RoomsContainer",
+  componentId: "sc-1yql2l7-1"
+})(["display:flex;"]);
 class Booking extends react__WEBPACK_IMPORTED_MODULE_3__["Component"] {
   constructor(props) {
     super(props);
@@ -257,13 +257,14 @@ var _jsxFileName = "/Users/tdkiran/Desktop/assessment-2/components/booking/room-
 var __jsx = react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement;
 
 
-const RoomFormContainer = styled_components__WEBPACK_IMPORTED_MODULE_3___default.a.div`
-    display: flex;
-    justify-content: space-between;
-`;
-const FormItem = styled_components__WEBPACK_IMPORTED_MODULE_3___default.a.div`
-    padding: 10px;
-`;
+const RoomFormContainer = styled_components__WEBPACK_IMPORTED_MODULE_3___default.a.div.withConfig({
+  displayName: "room-form__RoomFormContainer",
+  componentId: "sc-16rbohw-0"
+})(["display:flex;justify-content:space-between;"]);
+const FormItem = styled_components__WEBPACK_IMPORTED_MODULE_3___default.a.div.withConfig({
+  displayName: "room-form__FormItem",
+  componentId: "sc-16rbohw-1"
+})(["padding:10px;"]);
 class RoomForm extends react__WEBPACK_IMPORTED_MODULE_2__["Component"] {
   constructor(...args) {
     super(...args);
@@ -486,35 +487,18 @@ var _jsxFileName = "/Users/tdkiran/Desktop/assessment-2/components/common/card.j
 var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
 
 
-const Card = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.div`
-    border: 2px solid #ddd;
-    border-radius: 5px;
-    margin: 10px;
-
-    ${props => props.disabled && styled_components__WEBPACK_IMPORTED_MODULE_2__["css"]`
-        background: #ccc;
-        border-color: #ccc;
-    `}
-`;
-const CardTitle = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.div`
-    font-size: 12px;
-    font-weight: bold;
-    padding: 5px;
-    border-top-right-radius: 3px;
-    border-top-left-radius: 3px;
-    background: #ddd;
-
-    ${props => props.disabled && styled_components__WEBPACK_IMPORTED_MODULE_2__["css"]`
-        background: #ccc;
-    `}
-`;
-const CardContent = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.div`
-    padding: 10px;
-
-    ${props => props.disabled && styled_components__WEBPACK_IMPORTED_MODULE_2__["css"]`
-        pointer-events: none;
-    `}
-`;
+const Card = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.div.withConfig({
+  displayName: "card__Card",
+  componentId: "sc-1g0x190-0"
+})(["border:2px solid #ddd;border-radius:5px;margin:10px;", ""], props => props.disabled && Object(styled_components__WEBPACK_IMPORTED_MODULE_2__["css"])(["background:#ccc;border-color:#ccc;"]));
+const CardTitle = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.div.withConfig({
+  displayName: "card__CardTitle",
+  componentId: "sc-1g0x190-1"
+})(["font-size:12px;font-weight:bold;padding:5px;border-top-right-radius:3px;border-top-left-radius:3px;background:#ddd;", ""], props => props.disabled && Object(styled_components__WEBPACK_IMPORTED_MODULE_2__["css"])(["background:#ccc;"]));
+const CardContent = styled_components__WEBPACK_IMPORTED_MODULE_2___default.a.div.withConfig({
+  displayName: "card__CardContent",
+  componentId: "sc-1g0x190-2"
+})(["padding:10px;", ""], props => props.disabled && Object(styled_components__WEBPACK_IMPORTED_MODULE_2__["css"])(["pointer-events:none;"]));
 class AppCard extends react__WEBPACK_IMPORTED_MODULE_1__["Component"] {
   constructor(props) {
     super(props);
